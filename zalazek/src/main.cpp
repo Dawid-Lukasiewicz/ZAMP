@@ -1,8 +1,9 @@
 #include <iostream>
 #include <dlfcn.h>
 #include <cassert>
-#include "Interp4Command.hh"
-#include "MobileObj.hh"
+// #include "Interp4Command.hh"
+// #include "MobileObj.hh"
+#include "LibInterface.hh"
 
 using namespace std;
 

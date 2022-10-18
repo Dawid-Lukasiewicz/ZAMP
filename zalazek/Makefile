@@ -1,5 +1,5 @@
 __start__: obj libs __lines_for_space__ interp __plugin__
-	export LD_LIBRARY_PATH="./libs"; ./interp
+	export LD_LIBRARY_PATH="./libs";
 
 obj:
 	mkdir obj
@@ -24,10 +24,14 @@ LDFLAGS=-Wall
 
 
 
-interp: obj/main.o
-	g++ ${LDFLAGS} -o interp  obj/main.o -ldl
+interp: obj/LibInterface.o obj/main.o
+	g++ ${LDFLAGS} -o interp  obj/main.o obj/LibInterface.o -ldl
 
-obj/main.o: src/main.cpp inc/Interp4Command.hh
+obj/LibInterface.o: inc/LibInterface.hh inc/Interp4Command.hh\
+					src/LibInterface.cpp
+	g++ -c ${CPPFLAGS} -o obj/LibInterface.o src/LibInterface.cpp
+
+obj/main.o: src/main.cpp inc/Interp4Command.hh inc/LibInterface.hh
 	g++ -c ${CPPFLAGS} -o obj/main.o src/main.cpp
 
 clean:
