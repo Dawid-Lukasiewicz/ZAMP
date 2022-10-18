@@ -20,7 +20,8 @@ public:
     LibInterface(const char *LibName, RTLD_mode mode);
     ~LibInterface();
 
-    void CreateCmd(const char *CmdName);
+    void CreateCmd();
+    std::string getCmdName();
 
     const Interp4Command* getCmd() const;
 };

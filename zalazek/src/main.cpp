@@ -9,7 +9,9 @@ using namespace std;
 int main()
 {
   LibInterface face("libInterp4Move.so", lazy);
-  face.CreateCmd("CreateCmd");
+  face.CreateCmd();
+
+  cout << face.getCmdName() << endl;
 
   cout << endl;
   cout << face.getCmd()->GetCmdName() << endl;

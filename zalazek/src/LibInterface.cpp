@@ -17,16 +17,22 @@ LibInterface::~LibInterface()
     dlclose(_LibHandler);
 }
 
-void LibInterface::CreateCmd(const char *CmdName)
+void LibInterface::CreateCmd()
 {
-    void *pFun = dlsym(_LibHandler, CmdName);
+    void *pFun = dlsym(_LibHandler, "CreateCmd");
     if (!pFun)
     {
-        std::cerr << "[ERROR] function not found: " << CmdName << std::endl;
+        std::cerr << "[ERROR] function not found: CreateCmd" << std::endl;
         exit(-1);
     }
     _pCreateCmd = *reinterpret_cast<Interp4Command* (**)(void)>(&pFun);
     _pCmd = _pCreateCmd();
+    _CmdName = _pCmd->GetCmdName();
+}
+
+std::string LibInterface::getCmdName()
+{
+    return _CmdName;
 }
 
 const Interp4Command* LibInterface::getCmd() const
