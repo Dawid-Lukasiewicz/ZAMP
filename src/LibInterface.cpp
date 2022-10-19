@@ -24,7 +24,6 @@ LibInterface::~LibInterface()
 
 void LibInterface::CreateCmd(const std::string &CmdName)
 {
-    std::cout << _LibHandler[CmdName] << "\n";
     void *pFun = dlsym(_LibHandler[CmdName], "CreateCmd");
     if (!pFun)
     {
