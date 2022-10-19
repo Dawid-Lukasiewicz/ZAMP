@@ -1,0 +1,2 @@
+1. Zwalnianie biblioteki z poprzedniej klasy jeśli została już otwarta
+2. Libnterface powinien zawierać kolekcje wtyczek. Zastosowanie map
