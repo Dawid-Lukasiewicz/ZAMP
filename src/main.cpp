@@ -8,8 +8,11 @@ using namespace std;
 
 int main()
 {
-  LibInterface face("libInterp4Move.so", lazy);
-  face.CreateCmd("libInterp4Move.so");
+  // LibInterface face("libInterp4Move.so", lazy);
+  // face.CreateCmd("libInterp4Move.so");
+
+  LibInterface face("libInterp4Rotate.so", lazy);
+  face.CreateCmd("libInterp4Rotate.so");
 
   cout << face.getCmdName() << endl;
 
