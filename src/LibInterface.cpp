@@ -2,24 +2,30 @@
 
 LibInterface::LibInterface(const char *LibName, RTLD_mode mode)
 {
-    _LibHandler = dlopen(LibName, mode);
-    if (!_LibHandler)
+    void *LibHandler = dlopen(LibName, mode);
+    _LibHandler[LibName] = LibHandler;
+    if (!_LibHandler[LibName])
     {
         std::cerr << "[ERROR] library not found: " << LibName << std::endl;
         exit(-1);
     }
-    void *pFun = dlsym(_LibHandler, "CreateCmd");
+    void *pFun = dlsym(_LibHandler[LibName], "CreateCmd");
     
 }
 
 LibInterface::~LibInterface()
 {
-    dlclose(_LibHandler);
+    for (auto it = _LibHandler.begin(); it != _LibHandler.end(); ++it)
+    {
+        dlclose(it->second);
+    }
+    
 }
 
-void LibInterface::CreateCmd()
+void LibInterface::CreateCmd(const std::string &CmdName)
 {
-    void *pFun = dlsym(_LibHandler, "CreateCmd");
+    std::cout << _LibHandler[CmdName] << "\n";
+    void *pFun = dlsym(_LibHandler[CmdName], "CreateCmd");
     if (!pFun)
     {
         std::cerr << "[ERROR] function not found: CreateCmd" << std::endl;
