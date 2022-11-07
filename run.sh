@@ -1,3 +1,4 @@
 export LD_LIBRARY_PATH="./libs";
 
-./interp
+cpp command.txt > tmp_file.
+./interp tmp_file.cmd
