@@ -9,18 +9,18 @@ using namespace std;
 int main()
 {
   LibInterface face("libInterp4Move.so", lazy);
-  face.CreateCmd("libInterp4Move.so");
+  face.CreateCmd();
 
   LibInterface face2("libInterp4Rotate.so", lazy);
-  face2.CreateCmd("libInterp4Rotate.so");
+  face2.CreateCmd();
   cout << face2.getCmdName() << endl;
 
   LibInterface face3("libInterp4Set.so", lazy);
-  face3.CreateCmd("libInterp4Set.so");
+  face3.CreateCmd();
   cout << face3.getCmdName() << endl;
 
   LibInterface face4("libInterp4Pause.so", lazy);
-  face4.CreateCmd("libInterp4Pause.so");
+  face4.CreateCmd();
   cout << face4.getCmdName() << endl;
 
   cout << face.getCmdName() << endl;
