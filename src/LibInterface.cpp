@@ -1,8 +1,8 @@
 #include "LibInterface.hh"
 
-LibInterface::LibInterface(const char *LibName, RTLD_mode mode)
+LibInterface::LibInterface(std::string LibName, RTLD_mode mode)
 {
-    _LibHandler = dlopen(LibName, mode);
+    _LibHandler = dlopen(LibName.c_str(), mode);
     if (!_LibHandler)
     {
         std::cerr << "[ERROR] library not found: " << LibName << std::endl;

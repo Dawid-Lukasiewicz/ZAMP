@@ -24,8 +24,12 @@ LDFLAGS=-Wall
 
 
 
-interp: obj/LibInterface.o obj/main.o
-	g++ ${LDFLAGS} -o interp  obj/main.o obj/LibInterface.o -ldl
+interp: obj/InterfaceVector.o obj/LibInterface.o obj/main.o
+	g++ ${LDFLAGS} -o interp  obj/main.o obj/InterfaceVector.o obj/LibInterface.o -ldl
+
+obj/InterfaceVector.o: inc/LibInterface.hh inc/InterfaceVector.hh\
+					src/InterfaceVector.cpp
+	g++ -c ${CPPFLAGS} -o obj/InterfaceVector.o src/InterfaceVector.cpp
 
 obj/LibInterface.o: inc/LibInterface.hh inc/Interp4Command.hh\
 					src/LibInterface.cpp
