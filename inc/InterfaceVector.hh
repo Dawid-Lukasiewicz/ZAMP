@@ -21,7 +21,7 @@ public:
     InterfaceVector();
     ~InterfaceVector();
     void CreateCmd(std::string Cmd);
-    std::string GetCmdName(std::string Cmd);
+    std::shared_ptr<LibInterface> operator [] (std::string Cmd);
 };
 
 #endif

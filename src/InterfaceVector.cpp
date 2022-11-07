@@ -38,13 +38,7 @@ void InterfaceVector::CreateCmd(std::string Cmd)
     
 }
 
-std::string InterfaceVector::GetCmdName(std::string Cmd)
+std::shared_ptr<LibInterface> InterfaceVector::operator [] (std::string Cmd)
 {
-    // std::map<std::string, LibInterface>::iterator it = _LibHandlers.find(Cmd);
-    // if (it == _LibHandlers.end())
-    // {
-    //     std::cerr << "No plugin found" << std::endl;
-    //     return "";
-    // }
-    return _LibHandlers[Cmd]->getCmdName();
+    return _LibHandlers[Cmd];
 }

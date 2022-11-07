@@ -14,10 +14,9 @@ int main()
   Libs.CreateCmd("Rotate");
   Libs.CreateCmd("Pause");
   Libs.CreateCmd("Set");
-  cout << Libs.GetCmdName("Move") + "\n";
-  cout << Libs.GetCmdName("Rotate") + "\n";
-  cout << Libs.GetCmdName("Pause") + "\n";
-  cout << Libs.GetCmdName("Set") + "\n";
 
-  
+  cout << Libs["Move"]->getCmdName() + "\n";
+  cout << Libs["Rotate"]->getCmdName() + "\n";
+  cout << Libs["Pause"]->getCmdName() + "\n";
+  cout << Libs["Set"]->getCmdName() + "\n";
 }
