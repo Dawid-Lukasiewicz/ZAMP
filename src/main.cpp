@@ -1,9 +1,11 @@
 #include <iostream>
+#include <list>
 #include <fstream>
 #include <dlfcn.h>
 #include <cassert>
 #include "LibInterface.hh"
 #include "Handler.hh"
+
 
 using namespace std;
 
@@ -16,19 +18,28 @@ int main(int argc, char *argv[])
     exit(-1);
   }
 
-  ifstream file;
-  file.open(argv[1]);
-  std::string line;
-  while (getline(file, line))
-  {
-    cout << line << std::endl;
-  }
-
   Handler Libs;
   Libs.CreateCmd("Move");
   Libs.CreateCmd("Rotate");
   Libs.CreateCmd("Pause");
   Libs.CreateCmd("Set");
+
+  ifstream file;
+  file.open(argv[1]);
+  std::list<std::string> CmdList;
+  std::string word;
+  while (getline(file, word, ' '))
+  {
+    cout << word << std::endl;
+    if (word != " ")
+      CmdList.push_back(word);
+  }
+  cout << "-----------------CHECK--------------------\n";
+  for (auto const &tmp : CmdList)
+  {
+    cout << tmp + "\n";
+  }
+
 
   cout << Libs["Move"]->getCmdName() + "\n";
   cout << Libs["Rotate"]->getCmdName() + "\n";
