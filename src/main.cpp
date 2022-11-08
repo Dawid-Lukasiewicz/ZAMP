@@ -1,6 +1,6 @@
 #include <iostream>
 #include <sstream>
-#include <list>
+#include <vector>
 #include <dlfcn.h>
 #include <cassert>
 #include "LibInterface.hh"
@@ -8,7 +8,7 @@
 
 using namespace std;
 
-static inline bool ExecPreprocesor(const char *fileName, std::list<std::string> &StrmCmds)
+static inline bool ExecPreprocesor(const char *fileName, CommandsList &StrmCmds)
 {
   std::string CmdPreproc = "cpp -P ";  
   std::string Word;
@@ -34,6 +34,11 @@ static inline bool ExecPreprocesor(const char *fileName, std::list<std::string> 
   return pclose(pCmdFile) == 0;
 }
 
+static inline void ReadCmd()
+{
+
+}
+
 int main(int argc, char *argv[])
 {
   if (argc <= 1)
@@ -48,14 +53,22 @@ int main(int argc, char *argv[])
   Libs.CreateCmd("Pause");
   Libs.CreateCmd("Set");
 
-  std::list<std::string> CmdList;
+  CommandsList CmdList;
   if ( !ExecPreprocesor(argv[1], CmdList) )
   {
     cout << "Failed to read from file\n";
     exit(-1);
   }
-  cout << Libs["Move"]->getCmdName() + "\n";
-  cout << Libs["Rotate"]->getCmdName() + "\n";
-  cout << Libs["Pause"]->getCmdName() + "\n";
-  cout << Libs["Set"]->getCmdName() + "\n";
+
+  // for (auto const &word : CmdList)
+  // {
+  //   cout << word + "\n";
+  // }
+  
+  Libs.ReadCmdList(CmdList);
+
+  // cout << Libs["Move"]->getCmdName() + "\n";
+  // cout << Libs["Rotate"]->getCmdName() + "\n";
+  // cout << Libs["Pause"]->getCmdName() + "\n";
+  // cout << Libs["Set"]->getCmdName() + "\n";
 }

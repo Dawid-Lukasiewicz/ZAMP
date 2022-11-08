@@ -3,6 +3,7 @@
 
 #include <map>
 #include <memory>
+#include <vector>
 #include "LibInterface.hh"
 
 #define STR(x)      #x
@@ -13,6 +14,16 @@
 
 #define GET_LIB(CmdName) STR(LIB_##CmdName)
 
+
+#define IF_CMD_THEN_READ( CmdName )                             \
+        if (Keyword == STR(CmdName) )                           \
+        {                                                       \
+            if (!ReadCmd_##CmdName(CmdList)) return false;      \
+            continue;                                           \
+        }
+
+typedef std::vector<std::string> CommandsList;
+
 class Handler
 {
 private:
@@ -22,6 +33,11 @@ public:
     ~Handler();
     void CreateCmd(std::string Cmd);
     std::shared_ptr<LibInterface> operator [] (std::string Cmd);
+    bool ReadCmdList(CommandsList &CmdList);
+    bool ReadCmd_Move(CommandsList &CmdList);
+    bool ReadCmd_Rotate(CommandsList &CmdList);
+    bool ReadCmd_Pause(CommandsList &CmdList);
+    bool ReadCmd_Set(CommandsList &CmdList);
 };
 
 #endif
