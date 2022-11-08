@@ -62,25 +62,53 @@ bool Handler::ReadCmdList(CommandsList &CmdList)
 
 bool Handler::ReadCmd_Move(CommandsList &CmdList)
 {
-    _LibHandlers["Move"]->getCmd()->PrintSyntax();
-    
+    #ifdef DEBUG
+    std::cout << "Move ";
+    for (int it = 0; it < 3; ++it)
+    {
+        std::cout << CmdList[it] + " ";
+    }
+    std::cout << "\n";
+    #endif /* DEBUG */
+
     return true;
 }
 
 bool Handler::ReadCmd_Rotate(CommandsList &CmdList)
 {
-    _LibHandlers["Rotate"]->getCmd()->PrintSyntax();
+    #ifdef DEBUG
+    std::cout << "Rotate ";
+    for (int it = 0; it < 3; ++it)
+    {
+        std::cout << CmdList[it] + " ";
+    }
+    std::cout << "\n";
+    #endif /* DEBUG */
     return true;
 }
 
 bool Handler::ReadCmd_Pause(CommandsList &CmdList)
 {
-    _LibHandlers["Pause"]->getCmd()->PrintSyntax();
+    #ifdef DEBUG
+    std::cout << "Pause ";
+    for (int it = 0; it < 1; ++it)
+    {
+        std::cout << CmdList[it] + " ";
+    }
+    std::cout << "\n";
+    #endif /* DEBUG */
     return true;
 }
 
 bool Handler::ReadCmd_Set(CommandsList &CmdList)
 {
-    _LibHandlers["Set"]->getCmd()->PrintSyntax();
+    #ifdef DEBUG
+    std::cout << "Set ";
+    for (int it = 0; it < 4; ++it)
+    {
+        std::cout << CmdList[it] + " ";
+    }
+    std::cout << "\n";
+    #endif /* DEBUG */
     return true;
 }

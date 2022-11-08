@@ -6,6 +6,8 @@
 #include <vector>
 #include "LibInterface.hh"
 
+#define DEBUG 1
+
 #define STR(x)      #x
 #define LIB_Move    "libInterp4Move.so"
 #define LIB_Pause   "libInterp4Pause.so"
