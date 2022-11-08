@@ -13,13 +13,13 @@
 
 #define GET_LIB(CmdName) STR(LIB_##CmdName)
 
-class InterfaceVector
+class Handler
 {
 private:
     std::map<std::string, std::shared_ptr<LibInterface>> _LibHandlers;
 public:
-    InterfaceVector();
-    ~InterfaceVector();
+    Handler();
+    ~Handler();
     void CreateCmd(std::string Cmd);
     std::shared_ptr<LibInterface> operator [] (std::string Cmd);
 };

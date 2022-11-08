@@ -1,15 +1,15 @@
-#include "InterfaceVector.hh"
+#include "Handler.hh"
 
 
-InterfaceVector::InterfaceVector(/* args */)
+Handler::Handler(/* args */)
 {
 }
 
-InterfaceVector::~InterfaceVector()
+Handler::~Handler()
 {
 }
 
-void InterfaceVector::CreateCmd(std::string Cmd)
+void Handler::CreateCmd(std::string Cmd)
 {
     if (Cmd == "Move")
     {
@@ -38,7 +38,7 @@ void InterfaceVector::CreateCmd(std::string Cmd)
     
 }
 
-std::shared_ptr<LibInterface> InterfaceVector::operator [] (std::string Cmd)
+std::shared_ptr<LibInterface> Handler::operator [] (std::string Cmd)
 {
     return _LibHandlers[Cmd];
 }

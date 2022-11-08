@@ -3,7 +3,7 @@
 #include <dlfcn.h>
 #include <cassert>
 #include "LibInterface.hh"
-#include "InterfaceVector.hh"
+#include "Handler.hh"
 
 using namespace std;
 
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     cout << line << std::endl;
   }
 
-  InterfaceVector Libs;
+  Handler Libs;
   Libs.CreateCmd("Move");
   Libs.CreateCmd("Rotate");
   Libs.CreateCmd("Pause");
