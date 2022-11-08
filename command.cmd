@@ -9,3 +9,4 @@
   Move  Ob_A  10 10
   Rotate Ob_B ROTATE_SPEED 60 /* Rotate i Move wykonywane razem */
   Move  Ob_B 10 20            /* powoduja jazde po luku         */
+  
