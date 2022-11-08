@@ -8,12 +8,14 @@
 
 using namespace std;
 
+
+#define BUFF 1024
 static inline bool ExecPreprocesor(const char *fileName, CommandsList &StrmCmds)
 {
   std::string CmdPreproc = "cpp -P ";  
   std::string Word;
   std::stringstream Line;
-  char buff[50];
+  char buff[BUFF];
 
   CmdPreproc += fileName;
   FILE *pCmdFile;
@@ -22,7 +24,7 @@ static inline bool ExecPreprocesor(const char *fileName, CommandsList &StrmCmds)
   if (!pCmdFile) return false;
   while (!feof(pCmdFile))
   {
-    while (fgets(buff, 50, pCmdFile))
+    while (fgets(buff, BUFF, pCmdFile))
     {
       Line << buff;
     }

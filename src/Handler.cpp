@@ -49,11 +49,8 @@ std::shared_ptr<LibInterface> Handler::operator [] (std::string Cmd)
 bool Handler::ReadCmdList(CommandsList &CmdList)
 {
     std::string Keyword;
-
-    int tmpCount = 0;
-    while (!CmdList.empty())
+    while (CmdList.size() != 0)
     {
-        std::cout << tmpCount++;
         Keyword = CmdList.front();
         CmdList.erase(CmdList.begin());
         IF_CMD_THEN_READ( Move )
@@ -66,19 +63,24 @@ bool Handler::ReadCmdList(CommandsList &CmdList)
 bool Handler::ReadCmd_Move(CommandsList &CmdList)
 {
     _LibHandlers["Move"]->getCmd()->PrintSyntax();
+    
+    return true;
 }
 
 bool Handler::ReadCmd_Rotate(CommandsList &CmdList)
 {
     _LibHandlers["Rotate"]->getCmd()->PrintSyntax();
+    return true;
 }
 
 bool Handler::ReadCmd_Pause(CommandsList &CmdList)
 {
     _LibHandlers["Pause"]->getCmd()->PrintSyntax();
+    return true;
 }
 
 bool Handler::ReadCmd_Set(CommandsList &CmdList)
 {
     _LibHandlers["Set"]->getCmd()->PrintSyntax();
+    return true;
 }
