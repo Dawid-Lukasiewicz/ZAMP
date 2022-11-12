@@ -8,7 +8,7 @@
 #include <sstream>
 #include "LibInterface.hh"
 
-#define DEBUG 1
+// #define DEBUG 1
 
 #define STR(x)      #x
 #define LIB_Move    "libInterp4Move.so"

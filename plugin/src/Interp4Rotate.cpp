@@ -28,7 +28,8 @@ Interp4Command* CreateCmd(void)
 /*!
  *
  */
-Interp4Rotate::Interp4Rotate(): _Speed_mmS(0)
+Interp4Rotate::Interp4Rotate():
+  _Object_name(""), _AngleSpeed_degSs(0), _AngleDistance_degS(0)
 {}
 
 
@@ -40,7 +41,11 @@ void Interp4Rotate::PrintCmd() const
   /*
    *  Tu trzeba napisać odpowiednio zmodyfikować kod poniżej.
    */
-  cout << GetCmdName() << " " << _Speed_mmS  << " 10  2" << endl;
+  cout << GetCmdName()
+        << " " << _Object_name
+        << " " << _AngleSpeed_degSs
+        << " " << _AngleSpeed_degSs
+        << endl;
 }
 
 
@@ -70,9 +75,10 @@ bool Interp4Rotate::ExecCmd( MobileObj  *pMobObj,  int  Socket) const
  */
 bool Interp4Rotate::ReadParams(std::istream& Strm_CmdsList)
 {
-  /*
-   *  Tu trzeba napisać odpowiedni kod.
-   */
+  Strm_CmdsList
+    >> _Object_name
+    >> _AngleSpeed_degSs
+    >> _AngleDistance_degS;
   return true;
 }
 

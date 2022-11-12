@@ -26,8 +26,7 @@ public:
 
     void CreateCmd();
     std::string getCmdName();
-
-    const Interp4Command* getCmd() const;
+    Interp4Command* getCmd() const;
 };
 
 

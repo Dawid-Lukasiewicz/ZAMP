@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Interp4Pause.hh"
+#include "Interp4Set.hh"
 #include "MobileObj.hh"
 
 using std::cout;
@@ -21,33 +21,39 @@ extern "C" {
  */
 Interp4Command* CreateCmd(void)
 {
-  return Interp4Pause::CreateCmd();
+  return Interp4Set::CreateCmd();
 }
 
 
 /*!
  *
  */
-Interp4Pause::Interp4Pause(): _Speed_mmS(0)
+Interp4Set::Interp4Set():
+  _Object_name(""), _Xcoord_m(0), _Ycoord_m(0), _Angle_deg(0)
 {}
 
 
 /*!
  *
  */
-void Interp4Pause::PrintCmd() const
+void Interp4Set::PrintCmd() const
 {
   /*
    *  Tu trzeba napisać odpowiednio zmodyfikować kod poniżej.
    */
-  cout << GetCmdName() << " " << _Speed_mmS  << " 10  2" << endl;
+  cout << GetCmdName()
+        << " " << _Object_name
+        << " " << _Xcoord_m
+        << " " << _Ycoord_m
+        << " " << _Angle_deg
+        << endl;
 }
 
 
 /*!
  *
  */
-const char* Interp4Pause::GetCmdName() const
+const char* Interp4Set::GetCmdName() const
 {
   return ::GetCmdName();
 }
@@ -56,7 +62,7 @@ const char* Interp4Pause::GetCmdName() const
 /*!
  *
  */
-bool Interp4Pause::ExecCmd( MobileObj  *pMobObj,  int  Socket) const
+bool Interp4Set::ExecCmd( MobileObj  *pMobObj,  int  Socket) const
 {
   /*
    *  Tu trzeba napisać odpowiedni kod.
@@ -68,11 +74,13 @@ bool Interp4Pause::ExecCmd( MobileObj  *pMobObj,  int  Socket) const
 /*!
  *
  */
-bool Interp4Pause::ReadParams(std::istream& Strm_CmdsList)
+bool Interp4Set::ReadParams(std::istream& Strm_CmdsList)
 {
-  /*
-   *  Tu trzeba napisać odpowiedni kod.
-   */
+  Strm_CmdsList
+    >> _Object_name
+    >> _Xcoord_m
+    >> _Ycoord_m
+    >> _Angle_deg;
   return true;
 }
 
@@ -80,16 +88,16 @@ bool Interp4Pause::ReadParams(std::istream& Strm_CmdsList)
 /*!
  *
  */
-Interp4Command* Interp4Pause::CreateCmd()
+Interp4Command* Interp4Set::CreateCmd()
 {
-  return new Interp4Pause();
+  return new Interp4Set();
 }
 
 
 /*!
  *
  */
-void Interp4Pause::PrintSyntax() const
+void Interp4Set::PrintSyntax() const
 {
   cout << "   Set NazwaObiektu Opcja" << endl;
 }

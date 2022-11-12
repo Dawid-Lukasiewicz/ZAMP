@@ -61,6 +61,10 @@ int main(int argc, char *argv[])
   cout << CmdList.str();
 
   Libs.ReadCmdList(CmdList);
+  Libs["Move"]->getCmd()->PrintCmd();
+  Libs["Rotate"]->getCmd()->PrintCmd();
+  Libs["Pause"]->getCmd()->PrintCmd();
+  Libs["Set"]->getCmd()->PrintCmd();
 
   // cout << Libs["Move"]->getCmdName() + "\n";
   // cout << Libs["Rotate"]->getCmdName() + "\n";
