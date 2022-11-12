@@ -4,6 +4,8 @@
 #include <map>
 #include <memory>
 #include <vector>
+#include <iostream>
+#include <sstream>
 #include "LibInterface.hh"
 
 #define DEBUG 1
@@ -35,11 +37,11 @@ public:
     ~Handler();
     void CreateCmd(std::string Cmd);
     std::shared_ptr<LibInterface> operator [] (std::string Cmd);
-    bool ReadCmdList(CommandsList &CmdList);
-    bool ReadCmd_Move(CommandsList &CmdList);
-    bool ReadCmd_Rotate(CommandsList &CmdList);
-    bool ReadCmd_Pause(CommandsList &CmdList);
-    bool ReadCmd_Set(CommandsList &CmdList);
+    bool ReadCmdList(std::stringstream &CmdList);
+    bool ReadCmd_Move(std::stringstream &CmdList);
+    bool ReadCmd_Rotate(std::stringstream &CmdList);
+    bool ReadCmd_Pause(std::stringstream &CmdList);
+    bool ReadCmd_Set(std::stringstream &CmdList);
 };
 
 #endif

@@ -46,13 +46,11 @@ std::shared_ptr<LibInterface> Handler::operator [] (std::string Cmd)
     return _LibHandlers[Cmd];
 }
 
-bool Handler::ReadCmdList(CommandsList &CmdList)
+bool Handler::ReadCmdList(std::stringstream &CmdList)
 {
     std::string Keyword;
-    while (CmdList.size() != 0)
+    while (CmdList >> Keyword)
     {
-        Keyword = CmdList.front();
-        CmdList.erase(CmdList.begin());
         IF_CMD_THEN_READ( Move )
         IF_CMD_THEN_READ( Rotate )
         IF_CMD_THEN_READ( Pause )
@@ -60,13 +58,15 @@ bool Handler::ReadCmdList(CommandsList &CmdList)
     }
 }
 
-bool Handler::ReadCmd_Move(CommandsList &CmdList)
+bool Handler::ReadCmd_Move(std::stringstream &CmdList)
 {
+    std::string Word;
     #ifdef DEBUG
-    std::cout << "Move ";
+    std::cout << "Move";
     for (int it = 0; it < 3; ++it)
     {
-        std::cout << CmdList[it] + " ";
+        getline(CmdList, Word, ' ');
+        std::cout << Word + " ";
     }
     std::cout << "\n";
     #endif /* DEBUG */
@@ -74,39 +74,45 @@ bool Handler::ReadCmd_Move(CommandsList &CmdList)
     return true;
 }
 
-bool Handler::ReadCmd_Rotate(CommandsList &CmdList)
+bool Handler::ReadCmd_Rotate(std::stringstream &CmdList)
 {
+    std::string Word;
     #ifdef DEBUG
-    std::cout << "Rotate ";
+    std::cout << "Rotate";
     for (int it = 0; it < 3; ++it)
     {
-        std::cout << CmdList[it] + " ";
+        getline(CmdList, Word, ' ');
+        std::cout << Word + " ";
     }
     std::cout << "\n";
     #endif /* DEBUG */
     return true;
 }
 
-bool Handler::ReadCmd_Pause(CommandsList &CmdList)
+bool Handler::ReadCmd_Pause(std::stringstream &CmdList)
 {
+    std::string Word;
     #ifdef DEBUG
-    std::cout << "Pause ";
+    std::cout << "Pause";
     for (int it = 0; it < 1; ++it)
     {
-        std::cout << CmdList[it] + " ";
+        getline(CmdList, Word, ' ');
+        std::cout << Word + " ";
     }
     std::cout << "\n";
     #endif /* DEBUG */
     return true;
 }
 
-bool Handler::ReadCmd_Set(CommandsList &CmdList)
+bool Handler::ReadCmd_Set(std::stringstream &CmdList)
 {
+    std::string Word;
     #ifdef DEBUG
-    std::cout << "Set ";
+    std::cout << "Set";
     for (int it = 0; it < 4; ++it)
     {
-        std::cout << CmdList[it] + " ";
+        getline(CmdList, Word, ' ');
+        std::cout << Word + " ";
     }
     std::cout << "\n";
     #endif /* DEBUG */

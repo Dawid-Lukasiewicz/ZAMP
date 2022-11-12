@@ -10,12 +10,11 @@ using namespace std;
 
 
 #define BUFF 1024
-static inline bool ExecPreprocesor(const char *fileName, CommandsList &StrmCmds)
+static inline bool ExecPreprocesor(const char *fileName, stringstream &StrmCmds)
 {
   std::string CmdPreproc = "cpp -P ";  
-  std::string Word;
-  std::stringstream Line;
-  char buff[BUFF];
+  std::ostringstream TmpStrCmds;
+  char Line[BUFF];
 
   CmdPreproc += fileName;
   FILE *pCmdFile;
@@ -24,15 +23,13 @@ static inline bool ExecPreprocesor(const char *fileName, CommandsList &StrmCmds)
   if (!pCmdFile) return false;
   while (!feof(pCmdFile))
   {
-    while (fgets(buff, BUFF, pCmdFile))
+    while (fgets(Line, BUFF, pCmdFile))
     {
-      Line << buff;
-    }
-    while (getline(Line, Word, ' '))
-    {
-      StrmCmds.push_back(Word);
+      TmpStrCmds << Line;
     }
   }
+
+  StrmCmds.str(TmpStrCmds.str());
   return pclose(pCmdFile) == 0;
 }
 
@@ -55,18 +52,14 @@ int main(int argc, char *argv[])
   Libs.CreateCmd("Pause");
   Libs.CreateCmd("Set");
 
-  CommandsList CmdList;
+  std::stringstream CmdList;
   if ( !ExecPreprocesor(argv[1], CmdList) )
   {
     cout << "Failed to read from file\n";
     exit(-1);
   }
+  cout << CmdList.str();
 
-  // for (auto const &word : CmdList)
-  // {
-  //   cout << word + "\n";
-  // }
-  
   Libs.ReadCmdList(CmdList);
 
   // cout << Libs["Move"]->getCmdName() + "\n";
