@@ -5,38 +5,9 @@
 #include <cassert>
 #include "LibInterface.hh"
 #include "Handler.hh"
+#include "FileHandler.hh"
 
 using namespace std;
-
-
-#define BUFF 1024
-static inline bool ExecPreprocesor(const char *fileName, stringstream &StrmCmds)
-{
-  std::string CmdPreproc = "cpp -P ";  
-  std::ostringstream TmpStrCmds;
-  char Line[BUFF];
-
-  CmdPreproc += fileName;
-  FILE *pCmdFile;
-  pCmdFile = popen(CmdPreproc.c_str(), "r");
-
-  if (!pCmdFile) return false;
-  while (!feof(pCmdFile))
-  {
-    while (fgets(Line, BUFF, pCmdFile))
-    {
-      TmpStrCmds << Line;
-    }
-  }
-
-  StrmCmds.str(TmpStrCmds.str());
-  return pclose(pCmdFile) == 0;
-}
-
-static inline void ReadCmd()
-{
-
-}
 
 int main(int argc, char *argv[])
 {
@@ -58,7 +29,6 @@ int main(int argc, char *argv[])
     cout << "Failed to read from file\n";
     exit(-1);
   }
-  cout << CmdList.str();
 
   Libs.ReadCmdList(CmdList);
   Libs["Move"]->getCmd()->PrintCmd();
