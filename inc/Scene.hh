@@ -22,4 +22,4 @@ public:
 };
 
 
-#endif SCENE
+#endif /* SCENE */

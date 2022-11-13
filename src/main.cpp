@@ -6,6 +6,7 @@
 #include "LibInterface.hh"
 #include "Handler.hh"
 #include "FileHandler.hh"
+#include "Scene.hh"
 
 using namespace std;
 
@@ -36,8 +37,18 @@ int main(int argc, char *argv[])
   Libs["Pause"]->getCmd()->PrintCmd();
   Libs["Set"]->getCmd()->PrintCmd();
 
-  Configuration   Config;
+  shared_ptr<MobileObj> mobile1 = make_shared<MobileObj>();
+  mobile1->SetName("nazwa1");
 
-  if (!ReadFile("config/config.xml",Config)) return 1;
+  Scene scene1;
+  scene1.AddMobileObj(mobile1);
+
+  if (scene1.FindMobileObj("nazwa1") == mobile1)
+    cout << "Te same\n";
+  else
+    cout << "Nie te same\n";
+
+  // Configuration   Config;
+  // if (!ReadFile("config/config.xml",Config)) return 1;
 
 }
