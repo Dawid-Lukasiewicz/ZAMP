@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
   Libs["Pause"]->getCmd()->PrintCmd();
   Libs["Set"]->getCmd()->PrintCmd();
 
-  // cout << Libs["Move"]->getCmdName() + "\n";
-  // cout << Libs["Rotate"]->getCmdName() + "\n";
-  // cout << Libs["Pause"]->getCmdName() + "\n";
-  // cout << Libs["Set"]->getCmdName() + "\n";
+  Configuration   Config;
+
+  if (!ReadFile("config/config.xml",Config)) return 1;
+
 }
