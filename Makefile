@@ -24,8 +24,10 @@ LDFLAGS=-Wall
 
 
 
-interp: obj/Handler.o obj/LibInterface.o obj/main.o
-	g++ ${LDFLAGS} -o interp  obj/main.o obj/Handler.o obj/LibInterface.o -ldl
+interp: obj/Handler.o obj/LibInterface.o obj/xmlinterp.o  obj/main.o
+	g++ ${LDFLAGS} -o interp  obj/main.o obj/Handler.o\
+					obj/LibInterface.o obj/xmlinterp.o\
+					-ldl -lxerces-c
 
 obj/Handler.o: inc/LibInterface.hh inc/Handler.hh\
 					src/Handler.cpp
@@ -35,7 +37,11 @@ obj/LibInterface.o: inc/LibInterface.hh inc/Interp4Command.hh\
 					src/LibInterface.cpp
 	g++ -c ${CPPFLAGS} -o obj/LibInterface.o src/LibInterface.cpp
 
-obj/main.o: src/main.cpp inc/Interp4Command.hh inc/LibInterface.hh
+obj/xmlinterp.o: inc/xmlinterp.hh src/xmlinterp.cpp
+	g++ -c ${CPPFLAGS} -o obj/xmlinterp.o src/xmlinterp.cpp
+
+obj/main.o: src/main.cpp inc/Interp4Command.hh inc/LibInterface.hh\
+			inc/xmlinterp.hh
 	g++ -c ${CPPFLAGS} -o obj/main.o src/main.cpp
 
 clean:
