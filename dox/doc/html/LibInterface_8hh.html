@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Interpreter: Dokumentacja pliku LibInterface.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Interpreter
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Szukaj');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('LibInterface_8hh.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Komponenty</a> &#124;
+<a href="#enum-members">Wyliczenia</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja pliku LibInterface.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &lt;dlfcn.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="Interp4Command_8hh_source.html">Interp4Command.hh</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MobileObj_8hh_source.html">MobileObj.hh</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Wykres zależności załączania dla LibInterface.hh:</div>
+<div class="dyncontent">
+<div class="center"><img src="LibInterface_8hh__incl.png" border="0" usemap="#LibInterface_8hh" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik:</div>
+<div class="dyncontent">
+<div class="center"><img src="LibInterface_8hh__dep__incl.png" border="0" usemap="#LibInterface_8hhdep" alt=""/></div>
+</div>
+</div>
+<p><a href="LibInterface_8hh_source.html">Idź do kodu źródłowego tego pliku.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Komponenty</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLibInterface.html">LibInterface</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Wyliczenia</h2></td></tr>
+<tr class="memitem:a7eabbd2c42e28ceb8209ecc278977b69"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69">RTLD_mode</a> { <br />
+&#160;&#160;<a class="el" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a38d3436b37738f7190bd134ec44ca220">lazy</a> =RTLD_LAZY, 
+<a class="el" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a3b676d33b25e8d3b5a37101b8edaad71">now</a> =RTLD_NOW, 
+<a class="el" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a62cf9e82fb0fd65e0c3141654c352f68">binding_mask</a> =RTLD_BINDING_MASK, 
+<a class="el" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a16140394459f9fb85f33b936069142c2">noload</a> =RTLD_NOLOAD, 
+<br />
+&#160;&#160;<a class="el" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a5557ff949ce4f8b1b3b1a06e6f51500a">deepbind</a> =RTLD_DEEPBIND
+<br />
+ }</td></tr>
+<tr class="separator:a7eabbd2c42e28ceb8209ecc278977b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja typów wyliczanych</h2>
+<a id="a7eabbd2c42e28ceb8209ecc278977b69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7eabbd2c42e28ceb8209ecc278977b69">&#9670;&nbsp;</a></span>RTLD_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69">RTLD_mode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Wartości wyliczeń</th></tr><tr><td class="fieldname"><a id="a7eabbd2c42e28ceb8209ecc278977b69a38d3436b37738f7190bd134ec44ca220"></a>lazy&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7eabbd2c42e28ceb8209ecc278977b69a3b676d33b25e8d3b5a37101b8edaad71"></a>now&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7eabbd2c42e28ceb8209ecc278977b69a62cf9e82fb0fd65e0c3141654c352f68"></a>binding_mask&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7eabbd2c42e28ceb8209ecc278977b69a16140394459f9fb85f33b936069142c2"></a>noload&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7eabbd2c42e28ceb8209ecc278977b69a5557ff949ce4f8b1b3b1a06e6f51500a"></a>deepbind&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definicja w linii <a class="el" href="LibInterface_8hh_source.html#l00010">10</a> pliku <a class="el" href="LibInterface_8hh_source.html">LibInterface.hh</a>.</p>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;               {<a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a38d3436b37738f7190bd134ec44ca220">lazy</a>=RTLD_LAZY</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                ,<a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a3b676d33b25e8d3b5a37101b8edaad71">now</a>=RTLD_NOW</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                ,<a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a62cf9e82fb0fd65e0c3141654c352f68">binding_mask</a>=RTLD_BINDING_MASK</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                ,<a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a16140394459f9fb85f33b936069142c2">noload</a>=RTLD_NOLOAD</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                ,<a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a5557ff949ce4f8b1b3b1a06e6f51500a">deepbind</a>=RTLD_DEEPBIND};</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69a16140394459f9fb85f33b936069142c2"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a16140394459f9fb85f33b936069142c2">noload</a></div><div class="ttdeci">@ noload</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00013">LibInterface.hh:13</a></div></div>
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69a5557ff949ce4f8b1b3b1a06e6f51500a"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a5557ff949ce4f8b1b3b1a06e6f51500a">deepbind</a></div><div class="ttdeci">@ deepbind</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00014">LibInterface.hh:14</a></div></div>
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69a62cf9e82fb0fd65e0c3141654c352f68"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a62cf9e82fb0fd65e0c3141654c352f68">binding_mask</a></div><div class="ttdeci">@ binding_mask</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00012">LibInterface.hh:12</a></div></div>
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69a3b676d33b25e8d3b5a37101b8edaad71"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a3b676d33b25e8d3b5a37101b8edaad71">now</a></div><div class="ttdeci">@ now</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00011">LibInterface.hh:11</a></div></div>
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69a38d3436b37738f7190bd134ec44ca220"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a38d3436b37738f7190bd134ec44ca220">lazy</a></div><div class="ttdeci">@ lazy</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00010">LibInterface.hh:10</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="LibInterface_8hh.html">LibInterface.hh</a></li>
+    <li class="footer">Wygenerowano N, 13 lis 2022 03:53:33 dla Interpreter programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

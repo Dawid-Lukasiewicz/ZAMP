@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Interpreter: Plik źródłowy LibInterface.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Interpreter
+   &#160;<span id="projectnumber">0.1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',false,false,'search.php','Szukaj');
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('LibInterface_8hh_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<div class="title">LibInterface.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="LibInterface_8hh.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LIBINTERFACE</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define LIBINTERFACE</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;dlfcn.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Interp4Command_8hh.html">Interp4Command.hh</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="MobileObj_8hh.html">MobileObj.hh</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69">   10</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69">RTLD_mode</a> {<a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a38d3436b37738f7190bd134ec44ca220">lazy</a>=RTLD_LAZY</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a3b676d33b25e8d3b5a37101b8edaad71">   11</a></span>&#160;                ,<a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a3b676d33b25e8d3b5a37101b8edaad71">now</a>=RTLD_NOW</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a62cf9e82fb0fd65e0c3141654c352f68">   12</a></span>&#160;                ,<a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a62cf9e82fb0fd65e0c3141654c352f68">binding_mask</a>=RTLD_BINDING_MASK</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a16140394459f9fb85f33b936069142c2">   13</a></span>&#160;                ,<a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a16140394459f9fb85f33b936069142c2">noload</a>=RTLD_NOLOAD</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a5557ff949ce4f8b1b3b1a06e6f51500a">   14</a></span>&#160;                ,<a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a5557ff949ce4f8b1b3b1a06e6f51500a">deepbind</a>=RTLD_DEEPBIND};</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classLibInterface.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLibInterface.html">LibInterface</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classLibInterface.html#a27724b7f22a96b4c04cf143b53c3063d">   19</a></span>&#160;    <span class="keywordtype">void</span> *<a class="code" href="classLibInterface.html#a27724b7f22a96b4c04cf143b53c3063d">_LibHandler</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classLibInterface.html#a7da8e08595488f780795d29b3840fdcf">   20</a></span>&#160;    std::string <a class="code" href="classLibInterface.html#a7da8e08595488f780795d29b3840fdcf">_CmdName</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classLibInterface.html#a027eac6766c339b86ad2a4b884e604f5">   21</a></span>&#160;    <a class="code" href="classInterp4Command.html">Interp4Command</a> *(*_pCreateCmd)(void);</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classLibInterface.html#ab25c5fb4849735ca04654c3c7ef8e8b4">   22</a></span>&#160;    <a class="code" href="classInterp4Command.html">Interp4Command</a> *<a class="code" href="classLibInterface.html#ab25c5fb4849735ca04654c3c7ef8e8b4">_pCmd</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classLibInterface.html#a241cd5b147ab36a40c4e2a196437cd03">LibInterface</a>(std::string LibName, <a class="code" href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69">RTLD_mode</a> mode);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classLibInterface.html#adf64dbf24f4cc448f0075481a838ae40">~LibInterface</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLibInterface.html#ad01f8c045223fd3681fae721b9509e36">CreateCmd</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::string <a class="code" href="classLibInterface.html#a8b524950a409113b4df8fd368606bc00">getCmdName</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classInterp4Command.html">Interp4Command</a>* <a class="code" href="classLibInterface.html#ab774127a58252cf0ea8c3fc26c205614">getCmd</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69a16140394459f9fb85f33b936069142c2"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a16140394459f9fb85f33b936069142c2">noload</a></div><div class="ttdeci">@ noload</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00013">LibInterface.hh:13</a></div></div>
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69">RTLD_mode</a></div><div class="ttdeci">RTLD_mode</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00010">LibInterface.hh:10</a></div></div>
+<div class="ttc" id="aclassLibInterface_html_a8b524950a409113b4df8fd368606bc00"><div class="ttname"><a href="classLibInterface.html#a8b524950a409113b4df8fd368606bc00">LibInterface::getCmdName</a></div><div class="ttdeci">std::string getCmdName()</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8cpp_source.html#l00033">LibInterface.cpp:33</a></div></div>
+<div class="ttc" id="aclassLibInterface_html"><div class="ttname"><a href="classLibInterface.html">LibInterface</a></div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00016">LibInterface.hh:16</a></div></div>
+<div class="ttc" id="aclassLibInterface_html_a7da8e08595488f780795d29b3840fdcf"><div class="ttname"><a href="classLibInterface.html#a7da8e08595488f780795d29b3840fdcf">LibInterface::_CmdName</a></div><div class="ttdeci">std::string _CmdName</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00020">LibInterface.hh:20</a></div></div>
+<div class="ttc" id="aclassLibInterface_html_a27724b7f22a96b4c04cf143b53c3063d"><div class="ttname"><a href="classLibInterface.html#a27724b7f22a96b4c04cf143b53c3063d">LibInterface::_LibHandler</a></div><div class="ttdeci">void * _LibHandler</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00019">LibInterface.hh:19</a></div></div>
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69a5557ff949ce4f8b1b3b1a06e6f51500a"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a5557ff949ce4f8b1b3b1a06e6f51500a">deepbind</a></div><div class="ttdeci">@ deepbind</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00014">LibInterface.hh:14</a></div></div>
+<div class="ttc" id="aclassLibInterface_html_ab774127a58252cf0ea8c3fc26c205614"><div class="ttname"><a href="classLibInterface.html#ab774127a58252cf0ea8c3fc26c205614">LibInterface::getCmd</a></div><div class="ttdeci">Interp4Command * getCmd() const</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8cpp_source.html#l00038">LibInterface.cpp:38</a></div></div>
+<div class="ttc" id="aclassLibInterface_html_adf64dbf24f4cc448f0075481a838ae40"><div class="ttname"><a href="classLibInterface.html#adf64dbf24f4cc448f0075481a838ae40">LibInterface::~LibInterface</a></div><div class="ttdeci">~LibInterface()</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8cpp_source.html#l00015">LibInterface.cpp:15</a></div></div>
+<div class="ttc" id="aclassLibInterface_html_ab25c5fb4849735ca04654c3c7ef8e8b4"><div class="ttname"><a href="classLibInterface.html#ab25c5fb4849735ca04654c3c7ef8e8b4">LibInterface::_pCmd</a></div><div class="ttdeci">Interp4Command * _pCmd</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00022">LibInterface.hh:22</a></div></div>
+<div class="ttc" id="aclassLibInterface_html_ad01f8c045223fd3681fae721b9509e36"><div class="ttname"><a href="classLibInterface.html#ad01f8c045223fd3681fae721b9509e36">LibInterface::CreateCmd</a></div><div class="ttdeci">void CreateCmd()</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8cpp_source.html#l00020">LibInterface.cpp:20</a></div></div>
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69a62cf9e82fb0fd65e0c3141654c352f68"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a62cf9e82fb0fd65e0c3141654c352f68">binding_mask</a></div><div class="ttdeci">@ binding_mask</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00012">LibInterface.hh:12</a></div></div>
+<div class="ttc" id="aclassInterp4Command_html"><div class="ttname"><a href="classInterp4Command.html">Interp4Command</a></div><div class="ttdoc">Modeluje abstrakcyjne polecenie dla robota mobilnego.</div><div class="ttdef"><b>Definition:</b> <a href="Interp4Command_8hh_source.html#l00019">Interp4Command.hh:19</a></div></div>
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69a3b676d33b25e8d3b5a37101b8edaad71"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a3b676d33b25e8d3b5a37101b8edaad71">now</a></div><div class="ttdeci">@ now</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00011">LibInterface.hh:11</a></div></div>
+<div class="ttc" id="aMobileObj_8hh_html"><div class="ttname"><a href="MobileObj_8hh.html">MobileObj.hh</a></div><div class="ttdoc">Zawiera definicję klasy MobileObj.</div></div>
+<div class="ttc" id="aclassLibInterface_html_a241cd5b147ab36a40c4e2a196437cd03"><div class="ttname"><a href="classLibInterface.html#a241cd5b147ab36a40c4e2a196437cd03">LibInterface::LibInterface</a></div><div class="ttdeci">LibInterface(std::string LibName, RTLD_mode mode)</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8cpp_source.html#l00003">LibInterface.cpp:3</a></div></div>
+<div class="ttc" id="aInterp4Command_8hh_html"><div class="ttname"><a href="Interp4Command_8hh.html">Interp4Command.hh</a></div><div class="ttdoc">Definicja klasy Interp4Command.</div></div>
+<div class="ttc" id="aLibInterface_8hh_html_a7eabbd2c42e28ceb8209ecc278977b69a38d3436b37738f7190bd134ec44ca220"><div class="ttname"><a href="LibInterface_8hh.html#a7eabbd2c42e28ceb8209ecc278977b69a38d3436b37738f7190bd134ec44ca220">lazy</a></div><div class="ttdeci">@ lazy</div><div class="ttdef"><b>Definition:</b> <a href="LibInterface_8hh_source.html#l00010">LibInterface.hh:10</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="LibInterface_8hh.html">LibInterface.hh</a></li>
+    <li class="footer">Wygenerowano N, 13 lis 2022 03:53:33 dla Interpreter programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>
