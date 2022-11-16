@@ -1,52 +1,8 @@
 1. Zwalnianie biblioteki z poprzedniej klasy jeśli została już otwarta
 2. Libnterface powinien zawierać kolekcje wtyczek. Zastosowanie map
 
-private:
-    std::map<std::string, void*> _LibHandler;
-    std::string _CmdName;
-    Interp4Command *(*_pCreateCmd)(void);
-    Interp4Command *_pCmd;
+Na zajęciach początku etapu 2
+ExecCmd(Scene *pScene, sdt::pair<std::mutex, int socket> *pCommChannel)
 
-LibInterface::LibInterface(const char *LibName, RTLD_mode mode)
-{
-    void *LibHandler = dlopen(LibName, mode);
-    _LibHandler[LibName] = LibHandler;
-    if (!_LibHandler[LibName])
-    {
-        std::cerr << "[ERROR] library not found: " << LibName << std::endl;
-        exit(-1);
-    }
-    void *pFun = dlsym(_LibHandler[LibName], "CreateCmd");    
-}
-
-LibInterface::~LibInterface()
-{
-    for (auto it = _LibHandler.begin(); it != _LibHandler.end(); ++it)
-    {
-        dlclose(it->second);
-    }
-    
-}
-
-void LibInterface::CreateCmd(const std::string &CmdName)
-{
-    void *pFun = dlsym(_LibHandler[CmdName], "CreateCmd");
-    if (!pFun)
-    {
-        std::cerr << "[ERROR] function not found: CreateCmd" << std::endl;
-        exit(-1);
-    }
-    _pCreateCmd = *reinterpret_cast<Interp4Command* (**)(void)>(&pFun);
-    _pCmd = _pCreateCmd();
-    _CmdName = _pCmd->GetCmdName();
-}
-
-std::string LibInterface::getCmdName()
-{
-    return _CmdName;
-}
-
-const Interp4Command* LibInterface::getCmd() const
-{
-    return _pCmd;
-}
+Poprawić Handlera, nie powinno być tak, że najpierw zczytuję polecenie 
+i przeszukuję mape wtyczek

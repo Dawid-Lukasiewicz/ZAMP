@@ -295,7 +295,8 @@ Makefile.app: /tmp/dawid/serwer_graficzny/out/pro/serwer_graficzny.pro /usr/lib/
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		/tmp/dawid/serwer_graficzny/out/pro/serwer_graficzny.pro
+		/tmp/dawid/serwer_graficzny/out/pro/serwer_graficzny.pro \
+		/usr/lib/x86_64-linux-gnu/libQGLViewer-qt5.prl
 	$(QMAKE) -o Makefile.app /tmp/dawid/serwer_graficzny/out/pro/serwer_graficzny.pro
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf:
@@ -379,6 +380,7 @@ Makefile.app: /tmp/dawid/serwer_graficzny/out/pro/serwer_graficzny.pro /usr/lib/
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 /tmp/dawid/serwer_graficzny/out/pro/serwer_graficzny.pro:
+/usr/lib/x86_64-linux-gnu/libQGLViewer-qt5.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile.app /tmp/dawid/serwer_graficzny/out/pro/serwer_graficzny.pro
 

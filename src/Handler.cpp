@@ -71,6 +71,7 @@ bool Handler::ReadCmd_Move(std::stringstream &CmdList)
     std::cout << "\n";
     #endif /* DEBUG */
     _LibHandlers["Move"]->getCmd()->ReadParams(CmdList);
+    _LibHandlers["Move"]->getCmd()->PrintCmd();
 
     return true;
 }
@@ -88,6 +89,8 @@ bool Handler::ReadCmd_Rotate(std::stringstream &CmdList)
     std::cout << "\n";
     #endif /* DEBUG */
     _LibHandlers["Rotate"]->getCmd()->ReadParams(CmdList);
+    _LibHandlers["Rotate"]->getCmd()->PrintCmd();
+
     return true;
 }
 
@@ -104,6 +107,8 @@ bool Handler::ReadCmd_Pause(std::stringstream &CmdList)
     std::cout << "\n";
     #endif /* DEBUG */
     _LibHandlers["Pause"]->getCmd()->ReadParams(CmdList);
+    _LibHandlers["Pause"]->getCmd()->PrintCmd();
+
     return true;
 }
 
@@ -120,5 +125,6 @@ bool Handler::ReadCmd_Set(std::stringstream &CmdList)
     std::cout << "\n";
     #endif /* DEBUG */
     _LibHandlers["Set"]->getCmd()->ReadParams(CmdList);
+    _LibHandlers["Set"]->getCmd()->PrintCmd();
     return true;
 }

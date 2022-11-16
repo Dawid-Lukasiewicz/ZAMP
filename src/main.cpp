@@ -32,10 +32,10 @@ int main(int argc, char *argv[])
   }
 
   Libs.ReadCmdList(CmdList);
-  Libs["Move"]->getCmd()->PrintCmd();
-  Libs["Rotate"]->getCmd()->PrintCmd();
-  Libs["Pause"]->getCmd()->PrintCmd();
-  Libs["Set"]->getCmd()->PrintCmd();
+  // Libs["Move"]->getCmd()->PrintCmd();
+  // Libs["Rotate"]->getCmd()->PrintCmd();
+  // Libs["Pause"]->getCmd()->PrintCmd();
+  // Libs["Set"]->getCmd()->PrintCmd();
 
   shared_ptr<MobileObj> mobile1 = make_shared<MobileObj>();
   mobile1->SetName("nazwa1");
