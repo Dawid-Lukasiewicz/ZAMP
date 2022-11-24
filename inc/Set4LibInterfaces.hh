@@ -28,13 +28,13 @@
 
 typedef std::vector<std::string> CommandsList;
 
-class Handler
+class Set4LibInterfaces
 {
 private:
     std::map<std::string, std::shared_ptr<LibInterface>> _LibHandlers;
 public:
-    Handler();
-    ~Handler();
+    Set4LibInterfaces();
+    ~Set4LibInterfaces();
     void CreateCmd(std::string Cmd);
     std::shared_ptr<LibInterface> operator [] (std::string Cmd);
     bool ReadCmdList(std::stringstream &CmdList);

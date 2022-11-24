@@ -1,14 +1,14 @@
-#include "Handler.hh"
+#include "Set4LibInterfaces.hh"
 
-Handler::Handler(/* args */)
+Set4LibInterfaces::Set4LibInterfaces(/* args */)
 {
 }
 
-Handler::~Handler()
+Set4LibInterfaces::~Set4LibInterfaces()
 {
 }
 
-void Handler::CreateCmd(std::string Cmd)
+void Set4LibInterfaces::CreateCmd(std::string Cmd)
 {
     if (Cmd == "Move")
     {
@@ -41,12 +41,12 @@ void Handler::CreateCmd(std::string Cmd)
     
 }
 
-std::shared_ptr<LibInterface> Handler::operator [] (std::string Cmd)
+std::shared_ptr<LibInterface> Set4LibInterfaces::operator [] (std::string Cmd)
 {
     return _LibHandlers[Cmd];
 }
 
-bool Handler::ReadCmdList(std::stringstream &CmdList)
+bool Set4LibInterfaces::ReadCmdList(std::stringstream &CmdList)
 {
     std::string Keyword;
     while (CmdList >> Keyword)
@@ -58,7 +58,7 @@ bool Handler::ReadCmdList(std::stringstream &CmdList)
     }
 }
 
-bool Handler::ReadCmd_Move(std::stringstream &CmdList)
+bool Set4LibInterfaces::ReadCmd_Move(std::stringstream &CmdList)
 {
     std::string Word;
     #ifdef DEBUG
@@ -75,7 +75,7 @@ bool Handler::ReadCmd_Move(std::stringstream &CmdList)
     return true;
 }
 
-bool Handler::ReadCmd_Rotate(std::stringstream &CmdList)
+bool Set4LibInterfaces::ReadCmd_Rotate(std::stringstream &CmdList)
 {
     std::string Word;
     #ifdef DEBUG
@@ -91,7 +91,7 @@ bool Handler::ReadCmd_Rotate(std::stringstream &CmdList)
     return true;
 }
 
-bool Handler::ReadCmd_Pause(std::stringstream &CmdList)
+bool Set4LibInterfaces::ReadCmd_Pause(std::stringstream &CmdList)
 {
     std::string Word;
     #ifdef DEBUG
@@ -107,7 +107,7 @@ bool Handler::ReadCmd_Pause(std::stringstream &CmdList)
     return true;
 }
 
-bool Handler::ReadCmd_Set(std::stringstream &CmdList)
+bool Set4LibInterfaces::ReadCmd_Set(std::stringstream &CmdList)
 {
     std::string Word;
     #ifdef DEBUG

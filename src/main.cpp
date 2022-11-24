@@ -4,7 +4,7 @@
 #include <dlfcn.h>
 #include <cassert>
 #include "LibInterface.hh"
-#include "Handler.hh"
+#include "Set4LibInterfaces.hh"
 #include "FileHandler.hh"
 #include "Scene.hh"
 
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     exit(-1);
   }
 
-  Handler Libs;
+  Set4LibInterfaces Libs;
   Libs.CreateCmd("Move");
   Libs.CreateCmd("Rotate");
   Libs.CreateCmd("Pause");
