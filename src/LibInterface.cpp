@@ -1,15 +1,15 @@
 #include "LibInterface.hh"
 
-LibInterface::LibInterface(std::string LibName, RTLD_mode mode)
+LibInterface::LibInterface(std::string LibName)
 {
-    _LibHandler = dlopen(LibName.c_str(), mode);
+    _LibHandler = dlopen(LibName.c_str(), RTLD_LAZY);
     if (!_LibHandler)
     {
         std::cerr << "[ERROR] library not found: " << LibName << std::endl;
         exit(-1);
     }
     void *pFun = dlsym(_LibHandler, "CreateCmd");
-    
+    CreateCmd();
 }
 
 LibInterface::~LibInterface()

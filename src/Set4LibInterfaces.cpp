@@ -8,42 +8,15 @@ Set4LibInterfaces::~Set4LibInterfaces()
 {
 }
 
-void Set4LibInterfaces::CreateCmd(std::string Cmd)
+void Set4LibInterfaces::AddLib(std::string Cmd)
 {
-    if (Cmd == "Move")
-    {
-        std::shared_ptr<LibInterface> LibPlugin = std::make_shared<LibInterface>(LIB_Move, lazy);
-        _LibHandlers[Cmd] = LibPlugin;
-        _LibHandlers[Cmd]->CreateCmd();
-        return;
-    }
-    if (Cmd == "Pause")
-    {
-        std::shared_ptr<LibInterface> LibPlugin = std::make_shared<LibInterface>(LIB_Pause, lazy);
-        _LibHandlers[Cmd] = LibPlugin;
-        _LibHandlers[Cmd]->CreateCmd();
-        return;
-    }
-    if (Cmd == "Rotate")
-    {
-        std::shared_ptr<LibInterface> LibPlugin = std::make_shared<LibInterface>(LIB_Rotate, lazy);
-        _LibHandlers[Cmd] = LibPlugin;
-        _LibHandlers[Cmd]->CreateCmd();
-        return;
-    }
-    if (Cmd == "Set")
-    {
-        std::shared_ptr<LibInterface> LibPlugin = std::make_shared<LibInterface>(LIB_Set, lazy);
-        _LibHandlers[Cmd] = LibPlugin;
-        _LibHandlers[Cmd]->CreateCmd();
-        return;
-    }
-    
+    std::shared_ptr<LibInterface> LibPlugin = std::make_shared<LibInterface>(Cmd.c_str());
+    insert(std::pair<std::string, std::shared_ptr<LibInterface>> (LibPlugin->getCmdName(), LibPlugin));
 }
 
 std::shared_ptr<LibInterface> Set4LibInterfaces::operator [] (std::string Cmd)
 {
-    return _LibHandlers[Cmd];
+    return at(Cmd);
 }
 
 bool Set4LibInterfaces::ReadCmdList(std::stringstream &CmdList)
@@ -70,7 +43,7 @@ bool Set4LibInterfaces::ReadCmd_Move(std::stringstream &CmdList)
     }
     std::cout << "\n";
     #endif /* DEBUG */
-    _LibHandlers["Move"]->getCmd()->ReadParams(CmdList);
+    // ["Move"]->getCmd()->ReadParams(CmdList);
 
     return true;
 }
@@ -87,7 +60,7 @@ bool Set4LibInterfaces::ReadCmd_Rotate(std::stringstream &CmdList)
     }
     std::cout << "\n";
     #endif /* DEBUG */
-    _LibHandlers["Rotate"]->getCmd()->ReadParams(CmdList);
+    // _LibHandlers["Rotate"]->getCmd()->ReadParams(CmdList);
     return true;
 }
 
@@ -103,7 +76,7 @@ bool Set4LibInterfaces::ReadCmd_Pause(std::stringstream &CmdList)
     }
     std::cout << "\n";
     #endif /* DEBUG */
-    _LibHandlers["Pause"]->getCmd()->ReadParams(CmdList);
+    // _LibHandlers["Pause"]->getCmd()->ReadParams(CmdList);
     return true;
 }
 
@@ -119,6 +92,6 @@ bool Set4LibInterfaces::ReadCmd_Set(std::stringstream &CmdList)
     }
     std::cout << "\n";
     #endif /* DEBUG */
-    _LibHandlers["Set"]->getCmd()->ReadParams(CmdList);
+    // _LibHandlers["Set"]->getCmd()->ReadParams(CmdList);
     return true;
 }

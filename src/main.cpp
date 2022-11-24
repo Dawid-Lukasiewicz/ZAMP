@@ -19,10 +19,10 @@ int main(int argc, char *argv[])
   }
 
   Set4LibInterfaces Libs;
-  Libs.CreateCmd("Move");
-  Libs.CreateCmd("Rotate");
-  Libs.CreateCmd("Pause");
-  Libs.CreateCmd("Set");
+  Libs.AddLib(LIB_Move);
+  Libs.AddLib(LIB_Pause);
+  Libs.AddLib(LIB_Rotate);
+  Libs.AddLib(LIB_Set);
 
   std::stringstream CmdList;
   if ( !ExecPreprocesor(argv[1], CmdList) )

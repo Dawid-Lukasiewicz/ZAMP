@@ -21,7 +21,7 @@ private:
     Interp4Command *(*_pCreateCmd)(void);
     Interp4Command *_pCmd;
 public:
-    LibInterface(std::string LibName, RTLD_mode mode);
+    LibInterface(std::string LibName);
     ~LibInterface();
 
     void CreateCmd();
