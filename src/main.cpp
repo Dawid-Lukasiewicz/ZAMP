@@ -7,6 +7,7 @@
 #include "Set4LibInterfaces.hh"
 #include "FileHandler.hh"
 #include "Scene.hh"
+#include "ProgramHandler.hh"
 
 using namespace std;
 
@@ -18,37 +19,50 @@ int main(int argc, char *argv[])
     exit(-1);
   }
 
-  Set4LibInterfaces Libs;
-  Libs.AddLib(LIB_Move);
-  Libs.AddLib(LIB_Pause);
-  Libs.AddLib(LIB_Rotate);
-  Libs.AddLib(LIB_Set);
+  ProgramHandler hdl;
 
-  std::stringstream CmdList;
-  if ( !ExecPreprocesor(argv[1], CmdList) )
-  {
-    cout << "Failed to read from file\n";
-    exit(-1);
-  }
+  hdl.loadConfig();
+  std::cout << "Dupa1\n";
+  hdl.LoadLibs();
+  std::cout << "Dupa2\n";
+  hdl.avalaibleSyntax();
+  std::cout << "Dupa3\n";
+  std::cout.flush();
+  std::cerr.flush();
+  // hdl.parseCmds(argv[1]);
+  // std::cout << "Dupa4\n";
 
-  Libs.ReadCmdList(CmdList);
-  Libs["Move"]->getCmd()->PrintCmd();
-  Libs["Rotate"]->getCmd()->PrintCmd();
-  Libs["Pause"]->getCmd()->PrintCmd();
-  Libs["Set"]->getCmd()->PrintCmd();
+  // Set4LibInterfaces Libs;
+  // Libs.AddLib(LIB_Move);
+  // Libs.AddLib(LIB_Pause);
+  // Libs.AddLib(LIB_Rotate);
+  // Libs.AddLib(LIB_Set);
 
-  shared_ptr<MobileObj> mobile1 = make_shared<MobileObj>();
-  mobile1->SetName("nazwa1");
+  // std::stringstream CmdList;
+  // if ( !ExecPreprocesor(argv[1], CmdList) )
+  // {
+  //   cout << "Failed to read from file\n";
+  //   exit(-1);
+  // }
 
-  Scene scene1;
-  scene1.AddMobileObj(mobile1);
+  // Libs.ReadCmdList(CmdList);
+  // Libs["Move"]->getCmd()->PrintCmd();
+  // Libs["Rotate"]->getCmd()->PrintCmd();
+  // Libs["Pause"]->getCmd()->PrintCmd();
+  // Libs["Set"]->getCmd()->PrintCmd();
 
-  if (scene1.FindMobileObj("nazwa1") == mobile1)
-    cout << "Te same\n";
-  else
-    cout << "Nie te same\n";
+  // shared_ptr<MobileObj> mobile1 = make_shared<MobileObj>();
+  // mobile1->SetName("nazwa1");
+
+  // Scene scene1;
+  // scene1.AddMobileObj(mobile1);
+
+  // if (scene1.FindMobileObj("nazwa1") == mobile1)
+  //   cout << "Te same\n";
+  // else
+  //   cout << "Nie te same\n";
 
   // Configuration   Config;
-  // if (!ReadFile("config/config.xml",Config)) return 1;
+  // if (!ReadXMLFile("config/config.xml",Config)) return 1;
 
 }

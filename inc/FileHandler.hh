@@ -16,6 +16,6 @@ using namespace std;
 using namespace xercesc;
 
 bool ExecPreprocesor(const char *fileName, stringstream &StrmCmds);
-bool ReadFile(const char* sFileName, Configuration &rConfig);
+bool ReadXMLFile(const char* sFileName, Configuration &rConfig);
 
 #endif

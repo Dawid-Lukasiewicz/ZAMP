@@ -26,8 +26,6 @@
             continue;                                           \
         }
 
-typedef std::vector<std::string> CommandsList;
-
 class Set4LibInterfaces : public std::map<std::string, std::shared_ptr<LibInterface>>
 {
 private:
