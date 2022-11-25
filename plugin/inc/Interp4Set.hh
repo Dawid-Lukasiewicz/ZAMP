@@ -10,9 +10,9 @@
 
 /*!
  * \file
- * \brief Definicja klasy Interp4Pause
+ * \brief Definicja klasy Interp4Set
  *
- * Plik zawiera definicję klasy Interp4Pause ...
+ * Plik zawiera definicję klasy Interp4Set ...
  */
 
 /*!
@@ -20,18 +20,21 @@
  *
  *  Klasa modeluje ...
  */
-class Interp4Pause: public Interp4Command {
+class Interp4Set: public Interp4Command {
   /*
    *  Tu należy zdefiniować pola, które są niezbędne
    *  do przechowywania wartości parametrów danego polecenia.
    *  Ponieżej zdefiniowane jest tylko jedno pole jako przykład.
    */
-  double  _Speed_mmS;
+  std::string _Object_name;
+  double  _Xcoord_m;
+  double  _Ycoord_m;
+  double _Angle_deg;
  public:
   /*!
    * \brief
    */
-  Interp4Pause();  
+  Interp4Set();  
   /*!
    * \brief Wyświetla postać bieżącego polecenia (nazwę oraz wartości parametrów)
    */

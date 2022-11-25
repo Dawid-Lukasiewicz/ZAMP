@@ -24,18 +24,35 @@ LDFLAGS=-Wall
 
 
 
-interp: obj/Handler.o obj/LibInterface.o obj/main.o
-	g++ ${LDFLAGS} -o interp  obj/main.o obj/Handler.o obj/LibInterface.o -ldl
+interp: obj/Set4LibInterfaces.o obj/LibInterface.o obj/xmlinterp.o\
+		obj/main.o obj/FileHandler.o obj/Scene.o obj/ProgramHandler.o
+	g++ ${LDFLAGS} -o interp  obj/main.o obj/Set4LibInterfaces.o\
+					obj/LibInterface.o obj/xmlinterp.o\
+					obj/FileHandler.o obj/Scene.o obj/ProgramHandler.o\
+					-ldl -lxerces-c
 
-obj/Handler.o: inc/LibInterface.hh inc/Handler.hh\
-					src/Handler.cpp
-	g++ -c ${CPPFLAGS} -o obj/Handler.o src/Handler.cpp
+obj/ProgramHandler.o: inc/ProgramHandler.hh
+	g++ -c ${CPPFLAGS} -o obj/ProgramHandler.o src/ProgramHandler.cpp
+
+obj/Set4LibInterfaces.o: inc/LibInterface.hh inc/Set4LibInterfaces.hh\
+					src/Set4LibInterfaces.cpp
+	g++ -c ${CPPFLAGS} -o obj/Set4LibInterfaces.o src/Set4LibInterfaces.cpp
 
 obj/LibInterface.o: inc/LibInterface.hh inc/Interp4Command.hh\
 					src/LibInterface.cpp
 	g++ -c ${CPPFLAGS} -o obj/LibInterface.o src/LibInterface.cpp
 
-obj/main.o: src/main.cpp inc/Interp4Command.hh inc/LibInterface.hh
+obj/xmlinterp.o: inc/xmlinterp.hh src/xmlinterp.cpp inc/Configuration.hh
+	g++ -c ${CPPFLAGS} -o obj/xmlinterp.o src/xmlinterp.cpp
+
+obj/FileHandler.o: inc/FileHandler.hh src/FileHandler.cpp
+	g++ -c ${CPPFLAGS} -o obj/FileHandler.o src/FileHandler.cpp
+
+obj/Scene.o: inc/Scene.hh src/Scene.cpp
+	g++ -c ${CPPFLAGS} -o obj/Scene.o src/Scene.cpp
+
+obj/main.o: src/main.cpp inc/Interp4Command.hh inc/LibInterface.hh\
+			inc/xmlinterp.hh
 	g++ -c ${CPPFLAGS} -o obj/main.o src/main.cpp
 
 clean:

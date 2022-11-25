@@ -71,6 +71,7 @@ namespace geom {
 
   public:
 
+    // Vector(Type X, Type Y, Type Z): _Coord[0](X), _Coord[1](Y), _Coord[2](Z) {}
     /*!
      * \brief Współrzędne wektora są zerowane.
      *
@@ -431,6 +432,24 @@ std::ostream & operator << ( std::ostream &OStrm, const geom::Vector<Type,Size> 
    OStrm << ")";
    return OStrm;
 }
+
+
+/*!
+ * \brief Wypisuje współrzędne wektora do tekstowego strumienia wyjściowego.
+ *
+ *  Wypisuje współrzędne wektora do tekstowego strumienia wyjściowego.
+ *  \param IStrm - strumień wejściowy, z którego wypisywane są współrzędne wektora,
+ *  \param V - wektor, do ktorego współrzędne mają zostać wpisane.
+ */
+template<typename Type, unsigned int Size>
+inline
+std::istream & operator >> (std::istream &IStrm, geom::Vector<Type,Size> &V)
+{
+   for (unsigned int Ind = 0; Ind < Size; ++Ind) {
+     IStrm >> V[Ind];
+   }
+}
+
 
 
 

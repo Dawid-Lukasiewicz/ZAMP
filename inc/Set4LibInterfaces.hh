@@ -4,9 +4,11 @@
 #include <map>
 #include <memory>
 #include <vector>
+#include <iostream>
+#include <sstream>
 #include "LibInterface.hh"
 
-#define DEBUG 1
+// #define DEBUG 1
 
 #define STR(x)      #x
 #define LIB_Move    "libInterp4Move.so"
@@ -24,22 +26,20 @@
             continue;                                           \
         }
 
-typedef std::vector<std::string> CommandsList;
-
-class Handler
+class Set4LibInterfaces : public std::map<std::string, std::shared_ptr<LibInterface>>
 {
 private:
-    std::map<std::string, std::shared_ptr<LibInterface>> _LibHandlers;
+    
 public:
-    Handler();
-    ~Handler();
-    void CreateCmd(std::string Cmd);
+    Set4LibInterfaces();
+    ~Set4LibInterfaces();
+    void AddLib(std::string Cmd);
     std::shared_ptr<LibInterface> operator [] (std::string Cmd);
-    bool ReadCmdList(CommandsList &CmdList);
-    bool ReadCmd_Move(CommandsList &CmdList);
-    bool ReadCmd_Rotate(CommandsList &CmdList);
-    bool ReadCmd_Pause(CommandsList &CmdList);
-    bool ReadCmd_Set(CommandsList &CmdList);
+    bool ReadCmdList(std::stringstream &CmdList);
+    bool ReadCmd_Move(std::stringstream &CmdList);
+    bool ReadCmd_Rotate(std::stringstream &CmdList);
+    bool ReadCmd_Pause(std::stringstream &CmdList);
+    bool ReadCmd_Set(std::stringstream &CmdList);
 };
 
 #endif
