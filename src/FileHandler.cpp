@@ -43,8 +43,8 @@ bool ReadXMLFile(const char* sFileName, Configuration &rConfig)
    }
    catch (const XMLException& toCatch) {
             char* message = XMLString::transcode(toCatch.getMessage());
-            cerr << "Error during initialization! :\n";
-            cerr << "Exception message is: \n"
+            cout << "Error during initialization! :\n";
+            cout << "Exception message is: \n"
                  << message << "\n";
             XMLString::release(&message);
             return 1;
@@ -68,7 +68,7 @@ bool ReadXMLFile(const char* sFileName, Configuration &rConfig)
      
      if (!pParser->loadGrammar("config/config.xsd",
                               xercesc::Grammar::SchemaGrammarType,true)) {
-       cerr << "!!! Plik grammar/actions.xsd, '" << endl
+       cout << "!!! Plik grammar/actions.xsd, '" << endl
             << "!!! ktory zawiera opis gramatyki, nie moze zostac wczytany."
             << endl;
        return false;
@@ -78,7 +78,7 @@ bool ReadXMLFile(const char* sFileName, Configuration &rConfig)
    }
    catch (const XMLException& Exception) {
             char* sMessage = XMLString::transcode(Exception.getMessage());
-            cerr << "Informacja o wyjatku: \n"
+            cout << "Informacja o wyjatku: \n"
                  << "   " << sMessage << "\n";
             XMLString::release(&sMessage);
             return false;
@@ -87,7 +87,7 @@ bool ReadXMLFile(const char* sFileName, Configuration &rConfig)
             char* sMessage = XMLString::transcode(Exception.getMessage());
             char* sSystemId = xercesc::XMLString::transcode(Exception.getSystemId());
 
-            cerr << "Blad! " << endl
+            cout << "Blad! " << endl
                  << "    Plik:  " << sSystemId << endl
                  << "   Linia: " << Exception.getLineNumber() << endl
                  << " Kolumna: " << Exception.getColumnNumber() << endl

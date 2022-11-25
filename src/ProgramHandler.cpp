@@ -6,6 +6,7 @@ void ProgramHandler::loadConfig()
     if (!ReadXMLFile("config/config.xml", _Config))
         exit(-1);
     std::cout << "Done...\n\n\n\n\n\n\n\n" << std::endl;
+    std::cout.flush();
 }
 
 void ProgramHandler::LoadLibs()
