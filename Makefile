@@ -13,6 +13,7 @@ __lines_for_space__:
 	@echo
 	@echo
 	@echo
+	make clean
 
 
 __plugin__:
@@ -31,7 +32,8 @@ interp: obj/Set4LibInterfaces.o obj/LibInterface.o obj/xmlinterp.o\
 					obj/FileHandler.o obj/Scene.o obj/ProgramHandler.o\
 					-ldl -lxerces-c
 
-obj/ProgramHandler.o: inc/ProgramHandler.hh
+obj/ProgramHandler.o: inc/ProgramHandler.hh inc/FileHandler.hh\
+						inc/Interp4Command.hh inc/Set4LibInterfaces.hh inc/Scene.hh
 	g++ -c ${CPPFLAGS} -o obj/ProgramHandler.o src/ProgramHandler.cpp
 
 obj/Set4LibInterfaces.o: inc/LibInterface.hh inc/Set4LibInterfaces.hh\
