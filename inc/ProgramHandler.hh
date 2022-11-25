@@ -29,6 +29,7 @@ public:
     void LoadLibs();
     void avalaibleSyntax();
     void parseCmds(string cmdFile);
+    void printCmds();
 };
 
 

@@ -36,10 +36,28 @@ void ProgramHandler::parseCmds(string cmdFile)
     {
         std::string name;
         cmdStream >> name;
+        // std::cout << name << std::endl;
         if (name.length() > 1)
         {
+            // Interp4Command *tmp = new Interp4Command
             _Cmds.push_back(_Libs[name]->getCmd());
             _Cmds.back()->ReadParams(cmdStream);
+            // _Cmds.back()->PrintCmd();
+            // std::cout << _Cmds.size() << std::endl;
         }
+
     }
+}
+
+void ProgramHandler::printCmds()
+{
+    for (Interp4Command *cmd : _Cmds )
+    {
+        cmd->PrintCmd();
+    } 
+    // for (auto it = _Cmds.begin(); it != _Cmds.end(); ++it)
+    // {
+    //     (*it)->PrintCmd();
+    // }
+    
 }

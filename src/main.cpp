@@ -24,7 +24,9 @@ int main(int argc, char *argv[])
   hdl.loadConfig();
   hdl.LoadLibs();
   hdl.avalaibleSyntax();
-  // hdl.parseCmds(argv[1]);
+  std::cout << "Before parsing" << std::endl;
+  hdl.parseCmds(argv[1]);
+  hdl.printCmds();
   // std::cout << "Dupa4\n";
 
   // Set4LibInterfaces Libs;
