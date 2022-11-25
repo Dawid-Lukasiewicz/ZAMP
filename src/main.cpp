@@ -22,13 +22,8 @@ int main(int argc, char *argv[])
   ProgramHandler hdl;
 
   hdl.loadConfig();
-  std::cout << "Dupa1\n";
   hdl.LoadLibs();
-  std::cout << "Dupa2\n";
   hdl.avalaibleSyntax();
-  std::cout << "Dupa3\n";
-  std::cout.flush();
-  std::cerr.flush();
   // hdl.parseCmds(argv[1]);
   // std::cout << "Dupa4\n";
 

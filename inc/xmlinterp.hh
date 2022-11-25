@@ -2,6 +2,7 @@
 #define XMLINTERP4ACTIONS_HH
 
 #include <string>
+
 #include <xercesc/util/XMLString.hpp>
 //#include <xercesc/sax2/XMLReaderFactory.hpp>
 #include <xercesc/util/PlatformUtils.hpp>
@@ -11,9 +12,9 @@
 #include <xercesc/sax2/DefaultHandler.hpp>
 
 //XERCES_CPP_NAMESPACE_USE
-
 #include "Configuration.hh"
 
+using namespace std;
 
 /*!
  * \brief Implementuje reakcje na napotkane elementu opisu akcji
@@ -22,6 +23,8 @@
  * pliku XML.
  */
 class XMLInterp4Config : public xercesc::DefaultHandler {
+  Configuration *_Config;
+
   public:
    /*!
     * \brief Inicjalizuje obiekt i kojarzy go z listą poleceń robota

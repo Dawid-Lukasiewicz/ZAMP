@@ -4,8 +4,9 @@
 #include <vector>
 #include "Vector3D.hh"
 
-struct CubeConfig
+class ObjectData
 {
+public:
   std::string Name;
   Vector3D Shift;
   Vector3D Scale;
@@ -13,9 +14,9 @@ struct CubeConfig
   Vector3D Trans_m;
   Vector3D RGB;
 
-  CubeConfig()
+  ObjectData()
   {
-    Name = "cube";
+    Name = "Obj";
 
     for(int i = 0; i<3; i++)
     {
@@ -26,18 +27,19 @@ struct CubeConfig
       RGB[i] = 128;
     }
   }
+  ~ObjectData() {}
 };
 
 class Configuration {
-  std::vector<std::string> libs;
-  std::vector<CubeConfig> cubes;
+  std::vector<std::string> _LibName;
+  std::vector<ObjectData> _ObjectData;
 public:
 
-  const std::vector<std::string>& getLibs() const {return libs; };
-  const std::vector<CubeConfig>& getCubes() const {return cubes; };
+  const std::vector<std::string>& getLibs() const {return _LibName; };
+  const std::vector<ObjectData>& getObjs() const {return _ObjectData; };
 
-  std::vector<std::string>& modLibs() {return libs; }
-  std::vector<CubeConfig>& modCubes() { return cubes; } 
+  std::vector<std::string>& modLibs() {return _LibName; }
+  std::vector<ObjectData>& modObjs() { return _ObjectData; } 
 };
 
 

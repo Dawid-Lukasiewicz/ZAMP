@@ -7,6 +7,10 @@
 #include "FileHandler.hh"
 
 #include <sstream>
+#include <memory>
+
+using namespace std;
+
 
 class ProgramHandler
 {

@@ -16,6 +16,7 @@ using namespace std;
  */
 XMLInterp4Config::XMLInterp4Config(Configuration &rConfig)
 {
+  _Config = &rConfig;
 }
 
 
@@ -66,6 +67,7 @@ void XMLInterp4Config::ProcessLibAttrs(const xercesc::Attributes  &rAttrs)
  cout << "  Nazwa biblioteki: " << sLibName << endl;
 
  // Tu trzeba wpisać własny kod ...
+ _Config->modLibs().push_back(sLibName);
 
  xercesc::XMLString::release(&sParamName);
  xercesc::XMLString::release(&sLibName);
@@ -89,14 +91,20 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes  &rAttrs)
   *  Sprawdzamy, czy na pewno jest to Name i Value.
   */
 
- char* sName_Name = xercesc::XMLString::transcode(rAttrs.getQName(0));
- char* sName_Scale = xercesc::XMLString::transcode(rAttrs.getQName(1));
- char* sName_RGB = xercesc::XMLString::transcode(rAttrs.getQName(2));
+ char* sName_Name       = xercesc::XMLString::transcode(rAttrs.getQName(0));
+ char* sName_Shift      = xercesc::XMLString::transcode(rAttrs.getQName(1));
+ char* sName_Scale      = xercesc::XMLString::transcode(rAttrs.getQName(2));
+ char* sName_RotXYZ_deg = xercesc::XMLString::transcode(rAttrs.getQName(3));
+ char* sName_Trans_m    = xercesc::XMLString::transcode(rAttrs.getQName(4));
+ char* sName_RGB        = xercesc::XMLString::transcode(rAttrs.getQName(5));
 
  XMLSize_t  Index = 0;
- char* sValue_Name    = xercesc::XMLString::transcode(rAttrs.getValue(Index));
- char* sValue_Scale = xercesc::XMLString::transcode(rAttrs.getValue(1));
- char* sValue_RGB     = xercesc::XMLString::transcode(rAttrs.getValue(2));
+ char* sValue_Name        = xercesc::XMLString::transcode(rAttrs.getValue(Index));
+ char* sValue_Shift       = xercesc::XMLString::transcode(rAttrs.getValue(1));
+ char* sValue_Scale       = xercesc::XMLString::transcode(rAttrs.getValue(2));
+ char* sValue_RotXYZ_deg  = xercesc::XMLString::transcode(rAttrs.getValue(3));
+ char* sValue_Trans_m     = xercesc::XMLString::transcode(rAttrs.getValue(4));
+ char* sValue_RGB         = xercesc::XMLString::transcode(rAttrs.getValue(5));
 
 
  //-----------------------------------------------------------------------------
@@ -104,7 +112,10 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes  &rAttrs)
  //
  cout << " Atrybuty:" << endl
       << "     " << sName_Name << " = \"" << sValue_Name << "\"" << endl
+      << "     " << sName_Shift << " = \"" << sValue_Shift << "\"" << endl
       << "     " << sName_Scale << " = \"" << sValue_Scale << "\"" << endl
+      << "     " << sName_RotXYZ_deg << " = \"" << sValue_RotXYZ_deg << "\"" << endl
+      << "     " << sName_Trans_m << " = \"" << sValue_Trans_m << "\"" << endl
       << "     " << sName_RGB << " = \"" << sValue_RGB << "\"" << endl   
       << endl; 
  //-----------------------------------------------------------------------------
@@ -120,20 +131,57 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes  &rAttrs)
  //
  // IStrm >> Scale;
  //
- istringstream   IStrm;
- 
- IStrm.str(sValue_Scale);
- double  Sx,Sy,Sz;
+#define IF_STREAM_FAIL(Istream) if (IStrm.fail())                                   \
+                                {                                                   \
+                                  cerr << " Blad!!!" << endl;                       \
+                                } else {                                            \
+                                  cout << " Czytanie wartosci OK!!!" << endl;       \
+                                }                                                   
 
- IStrm >> Sx >> Sy >> Sz;
- if (IStrm.fail()) {
-     cerr << " Blad!!!" << endl;
- } else {
-     cout << " Czytanie wartosci OK!!!" << endl;
-     cout << "     " << Sx << "  " << Sy << "  " << Sz << endl;
- }
+ ObjectData obj;
+ obj.Name = sValue_Name;
+ 
+ istringstream   IStrm;
+ IStrm.str(sValue_Shift);
+ Vector3D shift;
+ IStrm >> shift;
+ IF_STREAM_FAIL(IStrm)
+ 
+ IStrm.clear();
+ IStrm.str(sValue_Scale);
+ Vector3D scale;
+ IStrm >> scale;
+ IF_STREAM_FAIL(IStrm)
+
+ IStrm.clear();
+ Vector3D rotXYZ;
+ IStrm.str(sValue_RotXYZ_deg);
+ IStrm >> rotXYZ;
+ IF_STREAM_FAIL(IStrm)
+
+ IStrm.clear();
+ Vector3D transXYZ;
+ IStrm.str(sValue_Trans_m);
+ IStrm >> transXYZ;
+ IF_STREAM_FAIL(IStrm)
+
+ IStrm.clear();
+ IStrm.str(sValue_RGB);
+ Vector3D rgb;
+ IStrm >> rgb;
+ IF_STREAM_FAIL(IStrm)
+
+obj.Shift       = shift;
+obj.Scale       = scale;
+obj.RotXYZ_deg  = rotXYZ;
+obj.Trans_m     = transXYZ;
+obj.RGB         = rgb;
+
+
+_Config->modObjs().push_back(obj);
 
  // Tu trzeba wstawić odpowiednio własny kod ...
+
 
  xercesc::XMLString::release(&sName_Name);
  xercesc::XMLString::release(&sName_Scale);

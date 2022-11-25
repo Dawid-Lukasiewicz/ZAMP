@@ -9,7 +9,14 @@ LibInterface::LibInterface(std::string LibName)
         exit(-1);
     }
     void *pFun = dlsym(_LibHandler, "CreateCmd");
-    CreateCmd();
+    if (!pFun)
+    {
+        std::cerr << "[ERROR] function not found: CreateCmd" << std::endl;
+        exit(-1);
+    }
+    _pCreateCmd = *reinterpret_cast<Interp4Command* (**)(void)>(&pFun);
+    _pCmd = _pCreateCmd();
+    _CmdName = _pCmd->GetCmdName();
 }
 
 LibInterface::~LibInterface()

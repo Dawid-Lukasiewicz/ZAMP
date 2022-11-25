@@ -42,7 +42,7 @@ obj/LibInterface.o: inc/LibInterface.hh inc/Interp4Command.hh\
 					src/LibInterface.cpp
 	g++ -c ${CPPFLAGS} -o obj/LibInterface.o src/LibInterface.cpp
 
-obj/xmlinterp.o: inc/xmlinterp.hh src/xmlinterp.cpp
+obj/xmlinterp.o: inc/xmlinterp.hh src/xmlinterp.cpp inc/Configuration.hh
 	g++ -c ${CPPFLAGS} -o obj/xmlinterp.o src/xmlinterp.cpp
 
 obj/FileHandler.o: inc/FileHandler.hh src/FileHandler.cpp
