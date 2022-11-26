@@ -23,6 +23,8 @@ int main(int argc, char *argv[])
 
   hdl.loadConfig();
   hdl.printConfig();
+  hdl.loadScene();
+  hdl.printScene();
   hdl.LoadLibs();
   hdl.avalaibleSyntax();
   hdl.parseCmds(argv[1]);

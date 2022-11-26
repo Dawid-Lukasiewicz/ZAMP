@@ -17,7 +17,7 @@
 
 
 
-
+/* >>>>>>>>>>> Write more code [Probably in MobileObj class] <<<<<<<<<<<< */
    /*!
     * Nazwy pól klasy są jedynie propozycją i mogą być zmienione
     * Nazwy metod są obowiązujące.

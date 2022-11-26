@@ -27,6 +27,8 @@ public:
 
     void loadConfig();
     void printConfig();
+    void loadScene();
+    void printScene();
     void LoadLibs();
     void avalaibleSyntax();
     void parseCmds(string cmdFile);

@@ -18,7 +18,7 @@ public:
     ~Scene();
 
     shared_ptr<MobileObj> FindMobileObj(string sName);
-    bool AddMobileObj(shared_ptr<MobileObj> pMobileObj);
+    void AddMobileObj(shared_ptr<MobileObj> pMobileObj);
 };
 
 
