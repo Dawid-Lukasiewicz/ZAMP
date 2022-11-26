@@ -15,3 +15,8 @@ void Scene::AddMobileObj(shared_ptr<MobileObj> pMobileObj)
 {
     _MobileObj.insert(pair<string, shared_ptr<MobileObj>>(pMobileObj->GetName(), pMobileObj));
 }
+
+const map<string, shared_ptr<MobileObj>> & Scene::GetMobileObjs() const
+{
+    return _MobileObj;
+}

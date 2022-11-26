@@ -29,5 +29,5 @@ int main(int argc, char *argv[])
   hdl.avalaibleSyntax();
   hdl.parseCmds(argv[1]);
   hdl.printCmds();
-  hdl.sendToServer();
+  hdl.createOnServer();
 }

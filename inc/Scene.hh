@@ -16,9 +16,10 @@ private:
 public:
     Scene();
     ~Scene();
-
+    
     shared_ptr<MobileObj> FindMobileObj(string sName);
     void AddMobileObj(shared_ptr<MobileObj> pMobileObj);
+    const map<string, shared_ptr<MobileObj>> & GetMobileObjs() const; 
 };
 
 

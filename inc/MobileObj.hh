@@ -30,7 +30,7 @@
 	* Kąt \e yaw reprezentuje rotację zgodnie z ruchem wskazówek zegara
         * wokół osi \e OZ. Wartość kąta wyrażona jest w stopniach.
         */
-       double _Ang_Yaw_deg = 0;
+       double _AngZ_Yaw_deg = 0;
 
        /*!
         * \brief Kąt \e pitch reprezentuje rotację zgodnie z ruchem wskazówek zegara
@@ -39,7 +39,7 @@
 	* Kąt \e pitch reprezentuje rotację zgodnie z ruchem wskazówek zegara
         * wokół osi \e OY. Wartość kąta wyrażona jest w stopniach.
         */
-       double _Ang_Pitch_deg = 0;
+       double _AngY_Pitch_deg = 0;
 
        /*!
         * \brief Kąt \e roll reprezentuje rotację zgodnie z ruchem wskazówek zegara
@@ -48,7 +48,7 @@
 	* Kąt \e roll reprezentuje rotację zgodnie z ruchem wskazówek zegara
         * wokół osi \e OX. Wartość kąta wyrażona jest w stopniach.
         */
-       double _Ang_Roll_deg = 0;
+       double _AngX_Roll_deg = 0;
 
        /*!
         * \brief Współrzędne aktualnej pozycji obiektu.
@@ -66,25 +66,37 @@
         */
        std::string  _Name;
 
+        /**
+         * @brief Wektor kolorów
+         */
+       Vector3D _RGB;
+
+       /**
+        * @brief Wektor wartości skali
+        * 
+        */
+       Vector3D _Scale;
+
+
      public:
       /*!
        * \brief Udostępia wartość kąta \e roll.
        *
        * Udostępia wartość kąta \e roll. Jest ona wyrażona w stopniach.
        */
-       double GetAng_Roll_deg() const { return _Ang_Roll_deg; }
+       double GetAng_Roll_deg() const { return _AngX_Roll_deg; }
       /*!
        * \brief Udostępia wartość kąta \e pitch.
        *
        * Udostępia wartość kąta \e pitch. Jest ona wyrażona w stopniach.
        */
-       double GetAng_Pitch_deg() const { return _Ang_Pitch_deg; }
+       double GetAng_Pitch_deg() const { return _AngY_Pitch_deg; }
        /*!
        * \brief Udostępia wartość kąta \e yaw.
        *
        * Udostępia wartość kąta \e yaw. Jest ona wyrażona w stopniach.
        */
-       double GetAng_Yaw_deg() const { return _Ang_Yaw_deg; }
+       double GetAng_Yaw_deg() const { return _AngZ_Yaw_deg; }
 
       /*!
        * \brief Zmienia wartość kąta \e roll.
@@ -92,21 +104,21 @@
        * Zmienia wartość kąta \e roll.
        * \param[in] Ang_Roll_deg - nowa wartość kąta \e roll wyrażona w stopniach.
        */
-       void SetAng_Roll_deg(double Ang_Roll_deg) { _Ang_Roll_deg = Ang_Roll_deg; }
+       void SetAng_Roll_deg(double Ang_Roll_deg) { _AngX_Roll_deg = Ang_Roll_deg; }
       /*!
        * \brief Zmienia wartość kąta \e pitch.
        *
        * Zmienia wartość kąta \e pitch.
        * \param[in] Ang_Pitch_deg - nowa wartość kąta \e pitch wyrażona w stopniach.
        */
-       void SetAng_Pitch_deg(double Ang_Pitch_deg) { _Ang_Pitch_deg = Ang_Pitch_deg; }
+       void SetAng_Pitch_deg(double Ang_Pitch_deg) { _AngY_Pitch_deg = Ang_Pitch_deg; }
       /*!
        * \brief Zmienia wartość kąta \e yaw.
        *
        * Zmienia wartość kąta \e yaw.
        * \param[in] Ang_Yaw_deg - nowa wartość kąta \e yaw wyrażona w stopniach.
        */
-       void SetAng_Yaw_deg(double Ang_Yaw_deg) { _Ang_Yaw_deg = Ang_Yaw_deg; }
+       void SetAng_Yaw_deg(double Ang_Yaw_deg) { _AngZ_Yaw_deg = Ang_Yaw_deg; }
 
       /*!
        * \brief Udostępnia współrzędne położenia obiektu w trybie tylko do odczytu.

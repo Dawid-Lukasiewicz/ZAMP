@@ -36,7 +36,7 @@ public:
     void avalaibleSyntax();
     void parseCmds(string cmdFile);
     void printCmds();
-    int sendToServer();
+    int createOnServer();
 };
 
 
