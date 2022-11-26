@@ -5,6 +5,8 @@
 #include "Set4LibInterfaces.hh"
 #include "Interp4Command.hh"
 #include "FileHandler.hh"
+#include "GuardedSocket.hh"
+#include "Connection.hh"
 
 #include <sstream>
 #include <memory>
@@ -19,11 +21,12 @@ private:
     Set4LibInterfaces _Libs;
     Configuration _Config;
     std::vector<Interp4Command *> _Cmds;
+    shared_ptr<GuardedSocket> _GuardSocket;
 
     
 public:
-    ProgramHandler()    {}
-    ~ProgramHandler()   {}
+    ProgramHandler();
+    ~ProgramHandler();
 
     void loadConfig();
     void printConfig();
@@ -33,6 +36,7 @@ public:
     void avalaibleSyntax();
     void parseCmds(string cmdFile);
     void printCmds();
+    int sendToServer();
 };
 
 

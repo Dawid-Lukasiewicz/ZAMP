@@ -26,14 +26,20 @@ LDFLAGS=-Wall
 
 
 interp: obj/Set4LibInterfaces.o obj/LibInterface.o obj/xmlinterp.o\
-		obj/main.o obj/FileHandler.o obj/Scene.o obj/ProgramHandler.o
+		obj/main.o obj/FileHandler.o obj/Scene.o obj/ProgramHandler.o\
+		obj/Connection.o
 	g++ ${LDFLAGS} -o interp  obj/main.o obj/Set4LibInterfaces.o\
 					obj/LibInterface.o obj/xmlinterp.o\
 					obj/FileHandler.o obj/Scene.o obj/ProgramHandler.o\
+					obj/Connection.o\
 					-ldl -lxerces-c
 
-obj/ProgramHandler.o: inc/ProgramHandler.hh inc/FileHandler.hh\
-						inc/Interp4Command.hh inc/Set4LibInterfaces.hh inc/Scene.hh
+obj/Connection.o: inc/Connection.hh
+	g++ -c ${CPPFLAGS} -o obj/Connection.o src/Connection.cpp
+
+obj/ProgramHandler.o: inc/ProgramHandler.hh inc/FileHandler.hh inc/Scene.hh\
+						inc/Interp4Command.hh inc/Set4LibInterfaces.hh\
+						inc/GuardedSocket.hh inc/Connection.hh
 	g++ -c ${CPPFLAGS} -o obj/ProgramHandler.o src/ProgramHandler.cpp
 
 obj/Set4LibInterfaces.o: inc/LibInterface.hh inc/Set4LibInterfaces.hh\
