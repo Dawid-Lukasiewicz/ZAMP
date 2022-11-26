@@ -28,6 +28,16 @@ public:
     }
   }
   ~ObjectData() {}
+  void printData() const
+  {
+    std::cout
+    << "Name = "<< Name << "\n"
+    << "Shift = "<< Shift << "\n"
+    << "Scale = "<< Scale << "\n"
+    << "Rotation = " << RotXYZ_deg << "\n"
+    << "Transition = " << Trans_m << "\n"
+    << "RGB color = "<< RGB << std::endl;
+  }
 };
 
 class Configuration {
