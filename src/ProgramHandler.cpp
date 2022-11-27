@@ -35,11 +35,15 @@ void ProgramHandler::loadScene()
     {
         shared_ptr<MobileObj> mobObj = make_shared<MobileObj>();
         mobObj->SetName(obj.Name.c_str());
-        mobObj->SetPosition_m(obj.Shift);
+        mobObj->SetPosition_m(obj.Trans_m);
         mobObj->SetAng_Pitch_deg(obj.RotXYZ_deg[0]);
         mobObj->SetAng_Yaw_deg(obj.RotXYZ_deg[1]);
         mobObj->SetAng_Roll_deg(obj.RotXYZ_deg[2]);
         /* >>>>>>>>>>> Write more code [Probably in MobileObj class] <<<<<<<<<<<< */
+        mobObj->Set_Shift(obj.Shift);
+        mobObj->Set_RGB(obj.RGB);
+        mobObj->Set_Scale(obj.Scale);
+
         _Scene.AddMobileObj(mobObj);
     }
 }
@@ -51,9 +55,12 @@ void ProgramHandler::printScene()
     {
         pMobiles = _Scene.FindMobileObj(obj.Name);
         cout
-        << "Mobile obj name: " << pMobiles->GetName() << " "
-        << "Mobile obj position: " << pMobiles->GetPositoin_m() << " "
-        /* Write more code */
+        << "Mobile obj name: " << pMobiles->GetName() << "\n"
+        << "Mobile obj position: " << pMobiles->GetPositoin_m() << "\n"
+        << "Mobile obj shift: " << pMobiles->Get_Shift() << "\n"
+        << "Mobile obj RGB: " << pMobiles->Get_RGB() << "\n"
+        << "Mobile obj scale: " << pMobiles->Get_Scale() << "\n"
+
         << endl;
     }
 }
@@ -112,23 +119,17 @@ int ProgramHandler::createOnServer()
     {
         sConfigCmds << "AddObj "
         << "Name=" << it->second->GetName()
-        << " RGB=" << "(20,200,200)"
-        << " Scale=" << "(4,2,1)"
-        << " Shift=" << "(0.5,0,0)"
-        << " RotXYZ_deg=" << "(" << it->second->GetAng_Roll_deg() << "," << it->second->GetAng_Pitch_deg() << "," << it->second->GetAng_Yaw_deg() << ")"
+        << " RGB=" << it->second->Get_RGB()
+        << " Scale=" <<  it->second->Get_Scale()
+        << " Shift=" << it->second->Get_Shift()
+        << " RotXYZ_deg=" << "(" << it->second->GetAng_Pitch_deg() << "," << it->second->GetAng_Yaw_deg() << "," <<  it->second->GetAng_Roll_deg() << ")"
         << " Trans_m=" << it->second->GetPositoin_m()
         << "\n";
+
+        // std::cout
     }
     
     std::cout << sConfigCmds.str();
-    // const char *sConfigCmds =
-    // "Clear\n"
-    // "AddObj Name=Podstawa1 RGB=(20,200,200) Scale=(4,2,1) Shift=(0.5,0,0) RotXYZ_deg=(0,-45,20) Trans_m=(-1,3,0)\n"
-    // "AddObj Name=Podstawa1.Ramie1 RGB=(200,0,0) Scale=(3,3,1) Shift=(0.5,0,0) RotXYZ_deg=(0,-45,0) Trans_m=(4,0,0)\n"
-    // "AddObj Name=Podstawa1.Ramie1.Ramie2 RGB=(100,200,0) Scale=(2,2,1) Shift=(0.5,0,0) RotXYZ_deg=(0,-45,0) Trans_m=(3,0,0)\n"       
-    // "AddObj Name=Podstawa2 RGB=(20,200,200) Scale=(4,2,1) Shift=(0.5,0,0) RotXYZ_deg=(0,-45,0) Trans_m=(-1,-3,0)\n"
-    // "AddObj Name=Podstawa2.Ramie1 RGB=(200,0,0) Scale=(3,3,1) Shift=(0.5,0,0) RotXYZ_deg=(0,-45,0) Trans_m=(4,0,0)\n"
-    // "AddObj Name=Podstawa2.Ramie1.Ramie2 RGB=(100,200,0) Scale=(2,2,1) Shift=(0.5,0,0) RotXYZ_deg=(0,-45,0) Trans_m=(3,0,0)\n";
 
     Send(_GuardSocket->GetSocket(), sConfigCmds.str().c_str());
 }

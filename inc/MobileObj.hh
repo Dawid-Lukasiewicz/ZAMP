@@ -77,8 +77,23 @@
         */
        Vector3D _Scale;
 
+        /**
+         * @brief Wektor wartości przesunięcia
+         * 
+         */
+       Vector3D _Shift;
+
 
      public:
+        const Vector3D & Get_RGB() const {return _RGB;}
+        void Set_RGB(Vector3D rgb) { _RGB=rgb; }
+
+        const Vector3D & Get_Scale() const {return _Scale;}
+        void Set_Scale(Vector3D scale) { _Scale = scale; }
+
+        const Vector3D & Get_Shift() const {return _Shift;}
+        void Set_Shift(Vector3D shift) { _Shift = shift; }
+
       /*!
        * \brief Udostępia wartość kąta \e roll.
        *
