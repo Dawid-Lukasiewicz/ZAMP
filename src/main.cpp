@@ -30,4 +30,5 @@ int main(int argc, char *argv[])
   hdl.parseCmds(argv[1]);
   hdl.printCmds();
   hdl.createOnServer();
+  hdl.execCmds();
 }

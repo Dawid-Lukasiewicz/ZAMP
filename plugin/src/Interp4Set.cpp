@@ -62,7 +62,7 @@ const char* Interp4Set::GetCmdName() const
 /*!
  *
  */
-bool Interp4Set::ExecCmd( Scene *pScene,  int  Socket) const
+bool Interp4Set::ExecCmd( Scene &pScene, shared_ptr<GuardedSocket> gSocket ) const
 {
   /*
    *  Tu trzeba napisać odpowiedni kod.

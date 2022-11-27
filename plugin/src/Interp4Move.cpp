@@ -61,11 +61,22 @@ const char* Interp4Move::GetCmdName() const
 /*!
  *
  */
-bool Interp4Move::ExecCmd( Scene *pScene,  int  Socket) const
+bool Interp4Move::ExecCmd( Scene &pScene, shared_ptr<GuardedSocket> gSocket ) const
 {
-  /*
-   *  Tu trzeba napisać odpowiedni kod.
-   */
+  std::stringstream cmd;
+  float transition = pScene.FindMobileObj(_Object_name)->GetPositoin_m()[0];
+  int iterations = STATES_NUMBER;
+  while (iterations >= 1)
+  {
+    cmd.clear();
+    cmd << "UpdadeObj Name=" <<_Object_name;
+    transition += _Distance_m/STATES_NUMBER;
+    cmd << transition;
+    --iterations;
+  }
+  // pScene.FindMobileObj(_Object_name)->SetPosition_m()
+  
+  
   return true;
 }
 

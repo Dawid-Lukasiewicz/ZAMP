@@ -7,6 +7,7 @@
 #endif
 
 #include "Interp4Command.hh"
+#include "GuardedSocket.hh"
 
 /*!
  * \file
@@ -47,7 +48,7 @@ class Interp4Pause: public Interp4Command {
   /*!
    * \brief Wykonuje polecenie oraz wizualizuje jego realizację
    */
-  virtual bool ExecCmd( Scene *pScene, int Socket) const;
+  virtual bool ExecCmd( Scene &pScene, shared_ptr<GuardedSocket> gSocket) const;
   /*!
    * \brief Czyta wartości parametrów danego polecenia
    */

@@ -2,8 +2,10 @@
 #define  INTERP4COMMAND_HH
 
 #include <iostream>
+#include <sstream>
 #include "MobileObj.hh"
 #include "Scene.hh"
+#include "GuardedSocket.hh"
 
 /*!
  * \file
@@ -40,7 +42,7 @@
    /*!
     * \brief Wykonuje polecenie oraz wizualizuje jego realizację.
     */
-   virtual bool ExecCmd( Scene *pScene, int Socket ) const = 0;
+   virtual bool ExecCmd( Scene &pScene, shared_ptr<GuardedSocket> gSocket ) const = 0;
    /*!
     * \brief Czyta wartości parametrów danego polecenia.
     */

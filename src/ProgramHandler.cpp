@@ -133,3 +133,13 @@ int ProgramHandler::createOnServer()
 
     Send(_GuardSocket->GetSocket(), sConfigCmds.str().c_str());
 }
+
+void ProgramHandler::execCmds()
+{
+    std::stringstream sCmds;
+    for (const Interp4Command *cmd : _Cmds)
+    {
+        cmd->ExecCmd(_Scene, _GuardSocket);
+    }
+    
+}

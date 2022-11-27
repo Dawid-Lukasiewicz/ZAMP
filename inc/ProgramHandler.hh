@@ -37,6 +37,7 @@ public:
     void parseCmds(string cmdFile);
     void printCmds();
     int createOnServer();
+    void execCmds();
 };
 
 

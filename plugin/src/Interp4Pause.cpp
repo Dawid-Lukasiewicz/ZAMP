@@ -56,7 +56,7 @@ const char* Interp4Pause::GetCmdName() const
 /*!
  *
  */
-bool Interp4Pause::ExecCmd( Scene *pScene,  int  Socket) const
+bool Interp4Pause::ExecCmd( Scene &pScene, shared_ptr<GuardedSocket> gSocket ) const
 {
   /*
    *  Tu trzeba napisać odpowiedni kod.

@@ -6,6 +6,8 @@
 #include <string>
 #include "MobileObj.hh"
 
+#define STATES_NUMBER 10
+
 using namespace std;
 
 class Scene

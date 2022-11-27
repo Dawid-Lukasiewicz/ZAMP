@@ -61,7 +61,7 @@ const char* Interp4Rotate::GetCmdName() const
 /*!
  *
  */
-bool Interp4Rotate::ExecCmd( Scene *pScene,  int  Socket) const
+bool Interp4Rotate::ExecCmd( Scene &pScene, shared_ptr<GuardedSocket> gSocket ) const
 {
   /*
    *  Tu trzeba napisać odpowiedni kod.
